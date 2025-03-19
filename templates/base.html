@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  </head>
+</head>
+<body>
+
+  <nav class="">
+     
+    <div class="nav-bar" style="    display: flex;
+        align-items: center;">
+      <div>
+      <p class="nav-para" style="margin: 0pc;">FREE SHIPPING on domestic order above Rs 999</p>
+     </div>
+      
+        <div class="nav-ions" style="    display: flex;
+            justify-content: center;
+            align-items: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 14222 14222" fill="currentColor" width="20" height="20" style="margin-right: 5px;">
+          <path d="M14222 7112c0 3549.352-2600.418 6491.344-6000 7024.72V9168h1657l315-2056H8222V5778c0-562 275-1111 1159-1111h897V2917s-814-139-1592-139c-1624 0-2686 984-2686 2767v1567H4194v2056h1806v4968.72C2600.418 13603.344 0 10661.352 0 7112 0 3184.703 3183.703 1 7111 1s7111 3183.703 7111 7111m-8222 7025c362 57 733 86 1111 86-377.945 0-749.003-29.485-1111-86.28Zm2222 0v-.28a7107.458 7107.458 0 0 1-167.717 24.267A7407.158 7407.158 0 0 0 8222 14137m-167.717 23.987C7745.664 14201.89 7430.797 14223 7111 14223c319.843 0 634.675-21.479 943.283-62.013"></path>
+        </svg>
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pinterest" viewBox="0 0 256 256" fill="currentColor" width="20" height="20" style="margin-right: 5px;">
+          <path d="M0 128.002c0 52.414 31.518 97.442 76.619 117.239-.36-8.938-.064-19.668 2.228-29.393 2.461-10.391 16.47-69.748 16.47-69.748s-4.089-8.173-4.089-20.252c0-18.969 10.994-33.136 24.686-33.136 11.643 0 17.268 8.745 17.268 19.217 0 11.704-7.465 29.211-11.304 45.426-3.207 13.578 6.808 24.653 20.203 24.653 24.252 0 40.586-31.149 40.586-68.055 0-28.054-18.895-49.052-53.262-49.052-38.828 0-63.017 28.956-63.017 61.3 0 11.152 3.288 19.016 8.438 25.106 2.368 2.797 2.697 3.922 1.84 7.134-.614 2.355-2.024 8.025-2.608 10.272-.852 3.242-3.479 4.401-6.409 3.204-17.884-7.301-26.213-26.886-26.213-48.902 0-36.361 30.666-79.961 91.482-79.961 48.87 0 81.035 35.364 81.035 73.325 0 50.213-27.916 87.726-69.066 87.726-13.819 0-26.818-7.47-31.271-15.955 0 0-7.431 29.492-9.005 35.187-2.714 9.869-8.026 19.733-12.883 27.421a127.897 127.897 0 0 0 36.277 5.249c70.684 0 127.996-57.309 127.996-128.005C256.001 57.309 198.689 0 128.005 0 57.314 0 0 57.309 0 128.002"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-instagram" viewBox="0 0 32 32" fill="currentColor" width="20" height="20" style="margin-right: 5px;">
+          <path d="M16 3.094c4.206 0 4.7.019 6.363.094 1.538.069 2.369.325 2.925.544.738.287 1.262.625 1.813 1.175s.894 1.075 1.175 1.813c.212.556.475 1.387.544 2.925.075 1.662.094 2.156.094 6.363s-.019 4.7-.094 6.363c-.069 1.538-.325 2.369-.544 2.925-.288.738-.625 1.262-1.175 1.813s-1.075.894-1.813 1.175c-.556.212-1.387.475-2.925.544-1.663.075-2.156.094-6.363.094s-4.7-.019-6.363-.094c-1.537-.069-2.369-.325-2.925-.544-.737-.288-1.263-.625-1.813-1.175s-.894-1.075-1.175-1.813c-.212-.556-.475-1.387-.544-2.925-.075-1.663-.094-2.156-.094-6.363s.019-4.7.094-6.363c.069-1.537.325-2.369.544-2.925.287-.737.625-1.263 1.175-1.813s1.075-.894 1.813-1.175c.556-.212 1.388-.475 2.925-.544 1.662-.081 2.156-.094 6.363-.094zm0-2.838c-4.275 0-4.813.019-6.494.094-1.675.075-2.819.344-3.819.731-1.037.4-1.913.944-2.788 1.819S1.486 4.656 1.08 5.688c-.387 1-.656 2.144-.731 3.825-.075 1.675-.094 2.213-.094 6.488s.019 4.813.094 6.494c.075 1.675.344 2.819.731 3.825.4 1.038.944 1.913 1.819 2.788s1.756 1.413 2.788 1.819c1 .387 2.144.656 3.825.731s2.213.094 6.494.094 4.813-.019 6.494-.094c1.675-.075 2.819-.344 3.825-.731 1.038-.4 1.913-.944 2.788-1.819s1.413-1.756 1.819-2.788c.387-1 .656-2.144.731-3.825s.094-2.212.094-6.494-.019-4.813-.094-6.494c-.075-1.675-.344-2.819-.731-3.825-.4-1.038-.944-1.913-1.819-2.788s-1.756-1.413-2.788-1.819c-1-.387-2.144-.656-3.825-.731C20.812.275 20.275.256 16 .256z"></path>
+          <path d="M16 7.912a8.088 8.088 0 0 0 0 16.175c4.463 0 8.087-3.625 8.087-8.088s-3.625-8.088-8.088-8.088zm0 13.338a5.25 5.25 0 1 1 0-10.5 5.25 5.25 0 1 1 0 10.5M26.294 7.594a1.887 1.887 0 1 1-3.774.002 1.887 1.887 0 0 1 3.774-.003z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-youtube" viewBox="0 0 21 20" fill="currentColor" width="20" height="20" style="margin-right: 5px;">
+          <path d="M-.196 15.803q0 1.23.812 2.092t1.977.861h14.946q1.165 0 1.977-.861t.812-2.092V3.909q0-1.23-.82-2.116T17.539.907H2.593q-1.148 0-1.969.886t-.82 2.116v11.894zm7.465-2.149V6.058q0-.115.066-.18.049-.016.082-.016l.082.016 7.153 3.806q.066.066.066.164 0 .066-.066.131l-7.153 3.806q-.033.033-.066.033-.066 0-.098-.033-.066-.066-.066-.131"></path>
+        </svg>
+        <img src="{% static 'Image/home/idain.jpg' %}" alt="" srcset="" width="20px" style="    width: 30px;
+    height: 30px;"> 
+        <p style="color: white; margin: 0pc;">USD</p>
+        <svg id="js_folder-collapse-button-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotate feather feather-chevron-up">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        
+      
+   </div>
+
+       
+  </nav>
+
+
+
+
+<!--banner-->
+
+<div class="video-container">
+ 
+ 
+</div>
+
+   
+
+
+
+ 
+   
+<div class="main-navbar">
+    <div class="container">
+        <div class="row main-navbaer">
+            <div class="col-md-6">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 50px; margin-bottom: 20px;">
+                    <img src="{% static 'Image/home/icon.webp' %}" alt="" class="icon-styling">
+                    
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search..." class="input-search">
+                        <img src="{% static 'Image/home/serchbar.png' %}" alt="Search" class="search-icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <div class="icon-leftstyling">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-user icon--line" viewBox="0 0 64 64">
+                            <path d="M35 39.84v-2.53c3.3-1.91 6-6.66 6-11.42 0-7.63 0-13.82-9-13.82s-9 6.19-9 13.82c0 4.76 2.7 9.51 6 11.42v2.53c-10.18.85-18 6-18 12.16h42c0-6.19-7.82-11.31-18-12.16" stroke-miterlimit="10" fill="none" stroke="currentColor" style="color: rgb(236, 230, 230);" stroke-width="3"></path>
+                        </svg>
+
+                        <toggle-cart>
+                            <a href="/cart" id="HeaderCartTrigger" aria-controls="HeaderCart" class="site-nav__link site-nav__link--icon site-nav__link--cart js-no-transition" data-icon="bag">
+                                <span class="cart-link" style="position: relative;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-heart icon--line" viewBox="0 0 64 64">
+                                        <path d="M51.27 15.05a13 13 0 0 0-18.44 0l-.83.83-.83-.83a13 13 0 0 0-18.44 18.44l.83.83L32 52.77l18.44-18.45.83-.83a13 13 0 0 0 0-18.44" fill="none" stroke="currentColor" style="color: rgb(248, 246, 246);" stroke-width="3"></path>
+                                    </svg>
+                                    <span class="cart-link__bubble cart-link__bubble--visible">
+                                        <span class="cart-link__bubble-num">0</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </toggle-cart>
+
+                        <toggle-cart>
+                            <a href="/cart" id="HeaderCartTrigger" aria-controls="HeaderCart" class="site-nav__link site-nav__link--icon site-nav__link--cart js-no-transition" data-icon="bag">
+                                <span class="cart-link" style="position: relative;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag icon--line" viewBox="0 0 64 64">
+                                        <path d="M24.23 18c0-7.75 3.92-14 8.75-14s8.74 6.29 8.74 14m-26.98 0h36.51l3.59 36.73h-43.7Z" fill="none" stroke="currentColor" style="color: rgb(247, 244, 244);" stroke-width="3"></path>
+                                    </svg>
+                                    <span class="cart-link__bubble cart-link__bubble--visible">
+                                        <span class="cart-link__bubble-num">6</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </toggle-cart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-main">
+                <nav>
+                    <ul class="menu">
+                        <li><a href="#">  NEW ARRIVAL</a></li> 
+                        <li><a href="#"> BEST SELLER</a></li>
+                        <li><a href="#" id="fabric__products">  PRINTED FABRIC <i class="fa-solid fa-angle-down" ></i></a></li> 
+                         
+                    
+                      
+                        <li style="    display: flex;align-items: center;text-align: center; margin: 0px;"><a href="#">  FABRIC SET <span class="new-icon">🆕</span></a></li>
+
+                        <li><a href="#" id="fabric__products1">  DYED FABRIC <i class="fa-solid fa-angle-down" ></i></i></a></li>
+                        <li>
+                          <a href="#">SHOP LOOK <i class="fa-solid fa-angle-down" id="fabric__products2"></i></a>
+                          <ul class="dropdown-menu" id="dropdown___box2">
+                              <li><a href="#">Look Book1</a></li>
+                              <li><a href="#">Look Book2</a></li>
+                              <li><a href="#">Look Book3</a></li>
+                              
+                          </ul>
+                      </li>
+                      <li>
+                        <a href="#" id="fabric__products3">WOMEN'S WEAR <i class="fa-solid fa-angle-down" ></i></a>
+                        <ul class="dropdown-menu" id="dropdown___box3">
+                            <li><a href="#">All</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">Co Ords</a></li>
+                            <li><a href="#">Tops</a></li>
+                            
+                        </ul>
+                    </li>
+                        
+                        <li style="color: #8b0000;"><a href="#" style="color: #8b0000;">SALE</a></li>
+                    </ul>
+                    <ul class="menu second-row" style="width: 10%;">
+                        <li><a href="#">DESIGN GALLERY</a></li>
+                    </ul>
+                </nav>
+              
+            </div>
+
+      <!--position-aboslyebox-->
+      <div id="dropdown___box" class="fabric-filter-box d-none">
+       
+        <div class="fabric-section">
+            <h4>Polyester Fabric</h4>
+            <ul>
+                <li>All</li>
+                <li>Japan Satin</li>
+                <li>Tusser Silk</li>
+                <li>Kora Silk</li>
+                <li>Kota Doria</li>
+                <li>Georgette</li>
+                <li>Weightless</li>
+                <li>Jam Satin</li>
+                <li>Muslin</li>
+                <li>Organza</li>
+                <li>Rayon</li>
+                <li>Silk Crepe</li>
+                <li>Linen</li>
+                <li>Pashmina</li>
+                <li>Chanderi</li>
+            </ul>
+        </div>
+    
+        <div class="fabric-section">
+            <h4>Pure & Viscose Fabric</h4>
+            <ul>
+                <li>All</li>
+                <li>Pure Cotton</li>
+                <li>Pure Chiffon</li>
+                <li>Pure Chinon</li>
+                <li>Pure Georgette</li>
+                <li>Pure Muslin</li>
+                <li>Upada Silk</li>
+            </ul>
+            <div class="fabric-section">
+              <h4>Fabric Quality</h4>
+              <ul>
+                  <li>Pure Fabric</li>
+                  <li>Viscose Fabric</li>
+                  <li>Polyester Fabric</li>
+                  <li>Bemberg Fabric</li>
+              </ul>
+          </div>
+        </div>
+    
+      
+      </div> 
+
+      <div id="dropdown___box1" class="fabric-filter-box d-none">
+      <div class="fabric-section">
+          <h4>Solid Dyed Fabric</h4>
+          <ul>
+              <li>All</li>
+              <li>Pure Chinon</li>
+              <li>Pure Organza</li>
+              <li>Natural Crepe</li>
+              <li>Upada Silk</li>
+              <li>Japan Satin 🆕</li>
+              <li>Georgette 🆕</li>
+              <li>American Crepe 🆕</li>
+              <li>Self Patterned Dyed</li>
+          </ul>
+      </div>
+
+
+      <div class="fabric-section">
+        <h4>Self Patterned Dyed</h4>
+    
+       </div>
+   
+
+
+
+
+  
+    
+    
+
+
+</div>
+  
+   
+  
+      <!--position-aboslyebox-->
+          
+</div>
+
+  
+<div class="main-footer main-cate">
+  <div class="parent-div">
+     <h4>Sign up and Save 10%</h4>
+     <p>Sign up today and get a 10% discount code towards your first purchase.</p>
+     <input class="input-design" type="email" id="email" name="email" placeholder="Email" required>
+     
+     <div style="display: flex; gap: 5px; align-items: center;">
+       <!-- Country Dropdown with Scroll -->
+       <select class="input-design" id="country" name="country" style="width: 30%; height: 50px; overflow-y: auto;">
+          <option value="" disabled selected>Select Country</option>
+          <option value="India" data-code="+91">India</option>
+          <option value="United States" data-code="+1">United States</option>
+          <option value="United Kingdom" data-code="+44">United Kingdom</option>
+          <option value="Canada" data-code="+1">Canada</option>
+          <option value="Australia" data-code="+61">Australia</option>
+          <option value="Germany" data-code="+49">Germany</option>
+          <option value="France" data-code="+33">France</option>
+          <option value="Japan" data-code="+81">Japan</option>
+          <option value="China" data-code="+86">China</option>
+          <option value="Brazil" data-code="+55">Brazil</option>
+          <option value="Italy" data-code="+39">Italy</option>
+          <option value="South Africa" data-code="+27">South Africa</option>
+          <option value="Russia" data-code="+7">Russia</option>
+       </select>
+
+       <!-- Phone Number Input with Default +91 -->
+       <input class="input-design" type="tel" id="phone" name="phone" 
+       placeholder="+91 Phone Number" 
+       pattern="[\+]?[0-9\s\-()]{7,15}" 
+       required style="width: 69%;">
+     </div>
+
+     <button class="input-design button-decrtion" id="unlockBtn">UNLOCK COUPON</button>
+     <p class="fotter-pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi sed corrupti quae voluptas unde, ea veniam quod quia minus!</p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("country").addEventListener("change", function() {
+    let selectedOption = this.options[this.selectedIndex];
+    let countryCode = selectedOption.getAttribute("data-code") || "+";
+    document.getElementById("phone").placeholder = countryCode + " Phone Number";
+  });
+</script>
+
+
+
+
+
+
+<div class="footer-container">
+  <div class="footer-links" style="    line-height: 37px;">
+      <div class="footer-column" >
+          <h5>Main Menu</h5>
+          <ul>
+              <li><a href="#"><span>New Arrival</span></a></li>
+              <li><a href="#">Best Seller</a></li>
+              <li><a href="#">Printed Fabric</a></li>
+              <li><a href="#">Fabric Set 🆕</a></li>
+              <li><a href="#">Dyed Fabric</a></li>
+              <li><a href="#">Shop Look</a></li>
+              <li><a href="#">Women's Wear</a></li>
+              <li><a href="#">Sale</a></li>
+              <li><a href="#">Design Gallery</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+          <h5>My Account</h5>
+          <ul>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Track Order</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">My Account</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+          <h5>Useful Links</h5>
+          <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Reach Us</a></li>
+              <li><a href="#">Return & Cancellation</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Wholesale Registration</a></li>
+              <li><a href="#">Wholesale Login</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Get in Touch</h5>
+        <ul class="list-unstyled">
+          <li>
+              <i class="fas fa-phone-alt"></i> 
+              <a href="tel:+917990105997" class="text-decoration-none text-dark">+91 799 0105 997</a>
+          </li>
+          <li>
+              <i class="fas fa-envelope"></i> 
+              <a href="mailto:example@example.com" class="text-decoration-none text-dark">Email Us</a>
+          </li>
+      </ul>
+    
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+      <p>© 2025 FAB VOGUE Studio® Private Limited. All rights reserved.</p>
+  </div>
+</div>
+
+
+<!--footer finsehed-->
+  
+
+
+
+
+
+
+
+
+
+
+
+<!--cart page clickoption-->
+
+<div class="container my-5 d-flex justify-content-center">
+  <div class="cart-box p-4 shadow-lg">
+    <div class="cart-items">
+        <!-- Item 1 -->
+        <div class="cart-item border-bottom pb-3 d-flex align-items-center">
+            <div class="cart-item-image">
+                <img src="{% static 'Image/home/newarrived5.webp' %}" alt="Fabric">
+            </div>
+            <div class="cart-item-details flex-grow-1 ms-3">
+                <p class="fw-bold mb-1">FAB VOGUE Studio Tropical Leaves Printed Japan Satin Fabric</p>
+                <input type="number" class="form-control form-control-sm" value="2" min="1" style="width: 60px;">
+            </div>
+            <div class="cart-quantity">
+              <span class="text-muted">₹289.00 / meter</span>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="cart-item border-bottom pb-3 d-flex align-items-center">
+          <div class="cart-item-image">
+              <img src="{% static 'Image/home/newarrived5.webp' %}" alt="Fabric">
+          </div>
+          <div class="cart-item-details flex-grow-1 ms-3">
+              <p class="fw-bold mb-1">FAB VOGUE Studio Tropical Leaves Printed Japan Satin Fabric</p>
+              <input type="number" class="form-control form-control-sm" value="2" min="1" style="width: 60px;">
+          </div>
+          <div class="cart-quantity">
+            <span class="text-muted">₹289.00 / meter</span>
+          </div>
+        </div>
+    </div>
+
+    <!-- Order Note -->
+    <div class="order-note my-3">
+        <textarea class="form-control" placeholder="Add order note..." rows="2"></textarea>
+    </div>
+
+    <!-- Subtotal -->
+    <div class="cart-total d-flex justify-content-between py-2 border-top">
+        <h5>Subtotal</h5>
+        <h5 class="fw-bold">₹877.00</h5>
+    </div>
+
+    <!-- Buttons Section (Each button in a separate row) -->
+    <div class="d-grid gap-3 mt-3">
+        <button class="btn btn-outline-dark w-100">Select Discount</button>
+        <button class="btn btn-primary w-100">View Cart</button>
+    </div>
+  </div>
+</div>
+
+  <!--cart page clickoption--> 
+
+
+
+
+
+
+
+
+
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

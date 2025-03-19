@@ -1,0 +1,1226 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  
+</head>
+<body>
+
+
+  <div class="container my-5">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-6">
+          <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Collections</a></li>
+                    <li class="breadcrumb-item active">Japan Satin</li>
+                </ol>
+            </nav>
+
+            <!-- Product Title & Price -->
+            <h2 class="fw-bold">Classy Yellow Floral Digital Printed Japan Satin Fabric</h2>
+            <p class="text-muted">SKU: <strong>JS-0-TA06831P8-110</strong></p>
+            <h4 class="text-danger fw-bold">₹296.00 per Meter</h4>
+
+            <!-- Key Benefits -->
+            <ul class="product-benefits">
+                <li>✅ Free domestic shipping</li>
+                <li>✅ Pay on delivery available</li>
+                <li>✅ Secure payment by RazorPay</li>
+                <li>📦 <strong>Estimated Ship by:</strong> Mon, Mar 24</li>
+                <li>💬 Ask for fractional quantity or wholesale</li>
+            </ul>
+
+            <!-- Quantity Selection -->
+            <div class="quantity-box">
+                <label for="quantity">Quantity:</label>
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" id="decrease">-</button>
+                    <input type="text" id="quantity" class="form-control text-center" value="1 Meter" readonly>
+                    <button class="btn btn-outline-secondary" id="increase">+</button>
+                </div>
+            </div>
+
+            <p class="text-muted mt-2">Tax included.</p>
+            <button class="btn btn-primary mt-3 w-100">🛒 Add to Cart</button>
+            <button class="btn btn-success mt-2 w-100">⚡ Buy Now</button>
+
+            <!-- Inquiry Form (Floating) -->
+            <div class="inquiry-form mt-4">
+                <h5>Ask for Wholesale or Custom Order</h5>
+                <form>
+                    <input type="text" class="form-control mb-2" placeholder="Your Name" required>
+                    <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                    <input type="tel" class="form-control mb-2" placeholder="Your Phone" required>
+                    <textarea class="form-control mb-2" placeholder="Your Message" rows="3" required></textarea>
+                    <button type="submit" class="btn w-100">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Specifications -->
+    <div class="product-details mt-5">
+        <h4>Fabric Specifications</h4>
+        <ul>
+            <li><strong>Fabric:</strong> Japan Satin</li>
+            <li><strong>Width:</strong> 110 CM | 43 Inch</li>
+            <li><strong>Weight:</strong> 100 Grams per Running Meter</li>
+            <li><strong>Composition:</strong> Polyester</li>
+            <li><strong>Uses:</strong> Dresses, sarees, tops, evening apparel, upholstery</li>
+            <li><strong>Wash Care:</strong> Gentle hand wash in cold water</li>
+            <li><strong>Origin:</strong> Made In India</li>
+        </ul>
+    </div>
+</div>
+   
+  
+
+
+<div class="main-divbanner">
+  <div>
+    <img src="{% static 'Image/home/productdetiiilsbannaer.webp' %}" alt="" srcset="" class="image-productdetidownbanner">
+  </div>
+  <div class="container">
+  <div class="banner-heading">
+    <h3>freench</h3>
+    <p>grenn floral green</p>
+  </div>
+</div>
+
+
+</div>
+<div class="container mt-5 main-cate">
+  <div class="row">
+      <div class="prodcet-bannerdown">
+        <div class="col-md-12">
+       
+          <!-- Customer Reviews -->
+          <div class="container d-flex flex-column text-center">
+            <!-- Heading in one row -->
+            <div class="row">
+                <div  class="col-12 justify-content: center;">
+                    <h4 class="fw-bold mt-4">Customer Reviews</h4>
+                </div>
+            </div>
+        
+            <!-- Remaining content in another row -->
+            <div class="row mt-2">
+              <div class="col-12 d-flex flex-column flex-md-row align-items-start product-detal">
+                  <!-- Stars and Review Text in one row -->
+                  <div>
+                    <div class="d-flex align-items-center flex-column">
+                      <div class="me-2">
+                          <span class="text-warning">&#9733;</span>
+                          <span class="text-warning">&#9733;</span>
+                          <span class="text-warning">&#9733;</span>
+                          <span class="text-warning">&#9733;</span>
+                          <span class="text-warning">&#9733;</span>
+                      </div>
+                      <p class="text-muted mb-0">Be the first to write a review</p>
+                  </div>
+                  </div>
+          
+                  <!-- Buttons -->
+                  <div class="d-flex flex-column ms-md-3">
+                      <button class="btn btn-outline-primary mb-2" style="background-color: #fdcc0d;">Write a Review</button>
+                      <button class="">Ask a Question</button>
+                  </div>
+              </div>
+          </div>
+          
+        </div>
+        
+
+          <!-- Discount Section -->
+          <div class="mt-4 p-4 bg-light border rounded text-center">
+            <h5 class="fw-bold">Unlock 12% Discount Coupon</h5>
+        
+            <!-- Email box on one row -->
+            <div class="mt-3">
+                <input type="email" class="form-control w-50 mx-auto" placeholder="Enter your email">
+            </div>
+        
+            <!-- Country and Phone Number on another row -->
+            <div class="mt-3 d-flex flex-column flex-md-row justify-content-center gap-2">
+                <select class="form-select w-25">
+                    <option selected>Select Country</option>
+                    <option value="IN">India</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                </select>
+                <input type="text" class="form-control w-25" placeholder="Enter Phone Number">
+            </div>
+        </div>
+        
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="container main-cate">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="container arrived-contaic">
+          <div class="left">
+            <h3>You may also like</h3>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <!-- Product Cards with col-md-4 -->
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        
+        <div></div>
+        <!-- End of row -->
+      </div>
+    </div>
+    <!-- End of row -->
+  </div>
+</div>
+
+
+
+<div class="container main-cate">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="container arrived-contaic">
+          <div class="left">
+            <h3>More from Japan Satin</h3>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <!-- Product Cards with col-md-4 -->
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+
+            <!-- Product Details -->
+            
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px; ">FEATURED</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <!-- End of row -->
+      </div>
+    </div>
+    <!-- End of row -->
+  </div>
+</div>
+
+
+ <div class="container main-cate">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="container arrived-contaic">
+          <div class="left">
+            <h3>Recently viewed</h3>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <!-- Product Cards with col-md-4 -->
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
+
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+              <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image" />
+
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
+              <p class="product-fabric">Fabric: Japan Satin</p>
+              <p class="price">₹300 per meter</p>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <!-- End of row -->
+      </div>
+    </div>
+    <!-- End of row -->
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
