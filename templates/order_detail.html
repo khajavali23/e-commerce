@@ -146,6 +146,8 @@
 
         <!-- Payment Method Selection -->
         <form method="POST" action="{% url 'place_order' order.id %}">
+
+
             {% csrf_token %}
             <div class="payment-options">
                 <label>

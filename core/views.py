@@ -185,11 +185,13 @@ def base(request):
 
 
 def checkout(request):
-    cart_items = Cart.objects.filter(user=request.user)
+    cart = get_object_or_404(Cart, user=request.user)  # Get the user's cart
+    cart_items = CartItem.objects.filter(cart=cart)  # Get all cart items
+    
     if not cart_items:
         return redirect('cart')  
 
-    total_price = sum(item.product.price * item.quantity for item in cart_items)
+    total_price = sum(item.product.price * item.quantity for item in cart_items)  # Calculate total
 
     order = Order.objects.create(user=request.user, total_price=total_price)
 
@@ -205,6 +207,23 @@ def checkout(request):
     return redirect('order_detail', order_id=order.id)
 
 
+
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     return render(request, "order_detail.html", {"order": order})
+
+def place_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    if request.method == 'POST':
+        # Process order
+        order.status = "Processing"
+        order.save()
+        
+        return redirect('order_success')  # Ensure this matches `urls.py`
+
+    return redirect('order_detail', order_id=order.id)
+
+    return redirect('order_detail', order_id=order.id)
+def order_success(request):
+    return render(request, 'order_success.html')
