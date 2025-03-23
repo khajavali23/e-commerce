@@ -1,201 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="css/shop.css">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div class="container main-cate">
-    <div class="row align-items-center">
-      
-      <div class="col-md-4 d-flex justify-content-center">
-        <div class="new-arrival-box">
-          <img src="Image/home/lookgirlpernt.webp" alt="" class="image-newarrivar">
-          <div class="div-arrived">
-            <p>Lorem ipsum dolor sit amet consectetur</p>
-            <p class="new-arrived-page">dolor sit amet consectetur</p>
-            <p>123.00 <span>per Meter</span></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-8">
-        <img src="Image/home/lookgirlimg.webp" alt="" srcset="" width="100%">
-      </div>
-  
-    </div>
-  </div>
-  <div class="container main-cate">
-    <div class="row align-items-center">
-      
-      
-      
-      <div class="col-md-8 main-cate">
-        <img src="Image/home/lookgirlimg.webp" alt="" srcset="" width="100%">
-      </div>
-      <div class="col-md-4 d-flex justify-content-center">
-        <div class="new-arrival-box">
-          <img src="Image/home/lookgirlpernt.webp" alt="" class="image-newarrivar">
-          <div class="div-arrived">
-            <p>Lorem ipsum dolor sit amet consectetur</p>
-            <p class="new-arrived-page">dolor sit amet consectetur</p>
-            <p>123.00 <span>per Meter</span></p>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-  </div> 
-  <div class="container main-cate">
-    <div class="row align-items-center">
-      
-      <div class="col-md-4 d-flex justify-content-center">
-        <div class="new-arrival-box">
-          <img src="Image/home/lookgirlpernt.webp" alt="" class="image-newarrivar">
-          <div class="div-arrived">
-            <p>Lorem ipsum dolor sit amet consectetur</p>
-            <p class="new-arrived-page">dolor sit amet consectetur</p>
-            <p>123.00 <span>per Meter</span></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-8">
-        <img src="Image/home/lookgirlimg.webp" alt="" srcset="" width="100%">
-      </div>
-  
-    </div>
-  </div>
-  <div class="container main-cate">
-    <div class="row align-items-center">
-      
-      
-      
-      <div class="col-md-8 main-cate">
-        <img src="Image/home/lookgirlimg.webp" alt="" srcset="" width="100%">
-      </div>
-      <div class="col-md-4 d-flex justify-content-center">
-        <div class="new-arrival-box">
-          <img src="Image/home/lookgirlpernt.webp" alt="" class="image-newarrivar">
-          <div class="div-arrived">
-            <p>Lorem ipsum dolor sit amet consectetur</p>
-            <p class="new-arrived-page">dolor sit amet consectetur</p>
-            <p>123.00 <span>per Meter</span></p>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-  </div> 
-  
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabric Collections</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-<!-- Breadcrumb Navigation -->
-<div class="container mt-3">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Collections</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Sale</li>
-        </ol>
-    </nav>
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+
+<div class="container main-cate">
+  <div class="row align-items-center">
+    
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="new-arrival-box">
+        <img src="{% static 'Image/home/lookgirlpernt.webp' %}" alt="" class="image-newarrivar">
+        <div class="div-arrived">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p class="new-arrived-page">dolor sit amet consectetur</p>
+          <p>123.00 <span>per Meter</span></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-8">
+      <img src="{% static 'Image/home/lookgirlimg.webp' %}" alt="" srcset="" width="100%">
+    </div>
+
+  </div>
+</div>
+<div class="container main-cate">
+  <div class="row align-items-center">
+    
+    
+    
+    <div class="col-md-8 main-cate">
+      <img src="{% static 'Image/home/lookgirlimg.webp' %}" alt="" srcset="" width="100%">
+    </div>
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="new-arrival-box">
+        <img src="{% static 'Image/home/lookgirlpernt.webp' %}" alt="" class="image-newarrivar">
+        <div class="div-arrived">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p class="new-arrived-page">dolor sit amet consectetur</p>
+          <p>123.00 <span>per Meter</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- Filters and Sorting -->
-<div class="container">
-    <div class="row">
-        <!-- Sidebar Filters -->
-        <div class="col-md-3">
-            <h5>Filters</h5>
-            <ul class="filter-list">
-                <li><input type="checkbox"> Quality</li>
-                <li><input type="checkbox"> Fabric</li>
-                <li><input type="checkbox"> Width</li>
-                <li><input type="checkbox"> Price</li>
-                <li><input type="checkbox"> Colors</li>
-                <li><input type="checkbox"> Patterns</li>
-            </ul>
+
+
+
+<div class="container main-cate">
+  <div class="row align-items-center">
+    
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="new-arrival-box">
+        <img src="{% static 'Image/home/lookgirlpernt.webp' %}" alt="" class="image-newarrivar">
+        <div class="div-arrived">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p class="new-arrived-page">dolor sit amet consectetur</p>
+          <p>123.00 <span>per Meter</span></p>
         </div>
+      </div>
+    </div>
+    
+    <div class="col-md-8">
+      <img src="{% static 'Image/home/lookgirlimg.webp' %}" alt="" srcset="" width="100%">
+    </div>
 
-        <!-- Product Grid -->
-        <div class="col-md-9">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5>52 Products</h5>
-                <select class="form-select w-auto">
-                    <option>Best Selling</option>
-                    <option>Large</option>
-                    <option>Small</option>
-                    <option>List</option>
-                </select>
-            </div>
+  </div>
+</div>
+<div class="container main-cate">
+  <div class="row align-items-center">
+    
+    
+    
+    <div class="col-md-8 main-cate">
+      <img src="{% static 'Image/home/lookgirlimg.webp' %}" alt="" srcset="" width="100%">
+    </div>
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="new-arrival-box">
+        <img src="{% static 'Image/home/lookgirlpernt.webp' %}" alt="" class="image-newarrivar">
+        <div class="div-arrived">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p class="new-arrived-page">dolor sit amet consectetur</p>
+          <p>123.00 <span>per Meter</span></p>
+        </div>
+      </div>
+    </div>
 
-            <div class="row mt-3">
-                <!-- Product 1 -->
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <span class="sale-badge">Sale</span>
-                        <img src="Image/home/newarrived1.webp" class="img-fluid">
-                        <div class="product-details">
-                            <h6>Rosegold Flower Digital Printed Fabric</h6>
-                            <p>Fabric: Japan Satin</p>
-                            <p class="price">₹251.00 <span class="old-price">₹289.00</span> <span class="discount">Save 13%</span></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <span class="sale-badge">Sale</span>
-                        <img src="Image/home/newarrived2.webp" class="img-fluid">
-                        <div class="product-details">
-                            <h6>Abstract Squares Digital Printed Fabric</h6>
-                            <p>Fabric: Silk Crepe</p>
-                            <p class="price">₹250.00 <span class="old-price">₹291.00</span> <span class="discount">Save 14%</span></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <span class="sale-badge">Sale</span>
-                        <img src="Image/home/newarrived3.webp" class="img-fluid">
-                        <div class="product-details">
-                            <h6>Rama Floral Digital Printed Fabric</h6>
-                            <p>Fabric: Pure Cotton</p>
-                            <p class="price">₹425.00 <span class="old-price">₹489.00</span> <span class="discount">Save 13%</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- End of row -->
-        </div> <!-- End of col-md-9 -->
-    </div> <!-- End of row -->
-</div> <!-- End of container -->
-
-</body>
-</html>
+  </div>
+</div> 
 
 
-
-  <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}

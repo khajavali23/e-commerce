@@ -1,27 +1,17 @@
 from django.contrib import admin
+from .models import Category, Product, LookBook, Cart, Wishlist, Order, OrderItem 
 
-# Register your models here.
-from django.contrib import admin
-from .models import Product
-from .models import Category
-from .models import LookBook
+# ✅ Proper way to register Category
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent_category')  # Customize fields as needed
 
-
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'stock', 'created_at')
-    search_fields = ('name', 'category')
-
-
-
-
-admin.site.register(Category)
-
-
-
-@admin.register(LookBook)
-class LookBookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at')  # Display these columns in the admin panel
-
+# ✅ Register other models normally
+admin.site.register(Product)
+admin.site.register(LookBook)
+admin.site.register(Cart)
+admin.site.register(Wishlist)
+admin.site.register(Order)
+admin.site.register(OrderItem)
 
 

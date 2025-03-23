@@ -136,6 +136,91 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+function changeImage(element) {
+    document.getElementById('mainImage').src = element.src;
+}
 
+document.getElementById("increase").addEventListener("click", function() {
+    let quantity = document.getElementById("quantity");
+    let value = parseInt(quantity.value) || 1;
+    quantity.value = (value + 1) + " Meters";
+});
+
+document.getElementById("decrease").addEventListener("click", function() {
+    let quantity = document.getElementById("quantity");
+    let value = parseInt(quantity.value) || 1;
+    if (value > 1) {
+        quantity.value = (value - 1) + " Meters";
+    }
+});
+
+function changeImage(element) {
+    document.getElementById('mainImage').src = element.src;
+}
+
+function removeFromWishlist(productId) {
+    fetch(`/remove-from-wishlist/${productId}/`, {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": getCSRFToken(),
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove item instantly from UI
+            document.querySelector(`[data-id="${productId}"]`).remove();
+        } else {
+            alert("Error: Could not remove item.");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+// Get CSRF Token
+function getCSRFToken() {
+    return document.querySelector('[name=csrfmiddlewaretoken]').value;
+}
+
+function updateQuantity(itemId, change) {
+    // Select the input field for the corresponding cart item
+    let inputField = document.querySelector(`.cart-item input[value="{{ item.quantity }}"]`);
+
+    if (inputField) {
+        let currentQuantity = parseInt(inputField.value);
+        let newQuantity = currentQuantity + change;
+
+        if (newQuantity < 1) return; // Prevent quantity from going below 1
+
+        // Update input field value
+        inputField.value = newQuantity;
+
+        // Send AJAX request to update quantity in backend
+        fetch(`/update-cart/${itemId}/`, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCSRFToken(),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ quantity: newQuantity })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Quantity updated successfully");
+                location.reload(); // Reload to reflect updated price
+            } else {
+                alert("Error updating quantity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+}
+
+// Get CSRF Token function
+function getCSRFToken() {
+    return document.querySelector('[name=csrfmiddlewaretoken]').value;
+}
 
 

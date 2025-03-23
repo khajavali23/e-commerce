@@ -1,87 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wishlist | FAB VOGUE Studio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/shop.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
+{% extends "base.html" %}
+{% load static %}
 
-<body>
-  <div class="container">
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+
+<div class="container main-cate ">
     <div class="wishlist-container">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-          <h3 class="mb-0">My Wishlist</h3>
-          <div class="wishlist-icons">
-              
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">My Wishlist</h3>
             <div class="wishlist-icons d-flex">
-              <a href="#" class="me-2 icon-circle"><i class="fab fa-facebook"></i></a> <!-- Facebook -->
-              <a href="#" class="me-2 icon-circle"><i class="fab fa-twitter"></i></a> <!-- Twitter -->
-              <a href="#" class="me-2 icon-circle"><i class="fab fa-whatsapp"></i></a> <!-- WhatsApp -->
-              <a href="#" class="icon-circle"><i class="fas fa-envelope"></i></a> <!-- Email -->
-          </div>
-            
-          </div>
-      </div>
-  
-      <!-- Search Bar -->
-      <input type="text" class="form-control mb-4" placeholder="Search item...">
-  
-      <div class="row">
-          <!-- Wishlist Item 1 -->
-          <div class="col-md-4">
-              <div class="wishlist-item">
-                  <img src="Image/home/wishlistimg.webp" alt="Product Image">
-                  <p class="fw-bold">FAB VOGUE Studio Tropical Leaves Printed Japan Satin Fabric</p>
-                  <span class="text-muted">₹289.00</span>
-                  <div class="wishlist-actions mt-2">
-                      <button class="btn btn-move-cart">Move to Cart</button>
-                      <button class="btn btn-remove"><i class="fas fa-trash"></i></button>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Wishlist Item 2 -->
-          <div class="col-md-4">
-              <div class="wishlist-item">
-                  <img src="Image/home/wishlistimg.webp" alt="Product Image">
-                  <p class="fw-bold">FAB VOGUE Studio Tropical Leaves Printed Japan Satin Fabric</p>
-                  <span class="text-muted">₹289.00</span>
-                  <div class="wishlist-actions mt-2">
-                      <button class="btn btn-move-cart">Move to Cart</button>
-                      <button class="btn btn-remove"></button>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Wishlist Item 3 -->
-          <div class="col-md-4">
-              <div class="wishlist-item">
-                  <img src="Image/home/wishlistimg.webp" alt="Product Image">
-                  <p class="fw-bold">FAB VOGUE Studio Tropical Leaves Printed Japan Satin Fabric</p>
-                  <span class="text-muted">₹289.00</span>
-                  <div class="wishlist-actions mt-2">
-                      <button class="btn btn-move-cart">Move to Cart</button>
-                      <button class="btn btn-remove"><i class="fas fa-trash"></i></button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  </div>
+                <a href="#" class="me-2 icon-circle"><i class="fab fa-facebook"></i></a> <!-- Facebook -->
+                <a href="#" class="me-2 icon-circle"><i class="fab fa-twitter"></i></a> <!-- Twitter -->
+                <a href="#" class="me-2 icon-circle"><i class="fab fa-whatsapp"></i></a> <!-- WhatsApp -->
+                <a href="#" class="icon-circle"><i class="fas fa-envelope"></i></a> <!-- Email -->
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <input type="text" class="form-control mb-4" id="wishlistSearch" placeholder="Search item..." onkeyup="searchWishlist()">
+
+        <div class="container">
+            <div class="row" id="wishlistContainer">
+                {% for item in wishlist %}
+                <div class="col-md-4 wishlist-item" data-id="{{ item.id }}" data-name="{{ item.product.name }}">
+                    <div class="wishlist-card">
+                        <div class="wishlist-img-container">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="wishlist-img">
+                        </div>
+                        <p class="fw-bold">{{ item.product.name }}</p>
+                        <span class="text-muted">₹{{ item.product.price }}</span>
+                        <div class="wishlist-actions mt-2">
+                            <button class="btn btn-move-cart" onclick="moveToCart({{ item.id }})">Move to Cart</button>
+                            
+                            <!-- Corrected Delete Button -->
+                            <button class="btn btn-remove" onclick="removeFromWishlist({{ item.id }})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- CSRF Token Hidden Input (Outside Button) -->
+        <form id="csrfForm">
+            {% csrf_token %}
+        </form>
+        
+      
+
+    
+<script>
+    // Search Functionality
+    function searchWishlist() {
+        let input = document.getElementById("wishlistSearch").value.toLowerCase();
+        let items = document.querySelectorAll(".wishlist-item");
+
+        items.forEach(item => {
+            let name = item.getAttribute("data-name").toLowerCase();
+            item.style.display = name.includes(input) ? "block" : "none";
+        });
+    }
+
+    // Move to Cart Functionality
+    function moveToCart(productId) {
+        fetch(`/add-to-cart/${productId}/`, { method: "POST", headers: { "X-CSRFToken": getCSRFToken() } })
+        .then(() => {
+            alert("Item moved to cart!");
+            removeFromWishlist(productId);
+        });
+    }
+
+    // Remove from Wishlist
+    function removeFromWishlist(productId) {
+        fetch(`/remove-from-wishlist/${productId}/`, { method: "POST", headers: { "X-CSRFToken": getCSRFToken() } })
+        .then(() => location.reload());
+    }
+
+    // Get CSRF Token
+    function getCSRFToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]').value;
+    }
+</script>
 
 
 
-
-
-  <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}

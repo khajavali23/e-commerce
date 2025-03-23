@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Pay with Razorpay</h2>
+    <input type="number" id="amount" placeholder="Enter Amount">
+    <button onclick="startPayment()">Pay Now</button>
+
+    <script>
+        function startPayment() {
+            var amount = document.getElementById("amount").value;
+
+            fetch("/payments/create-order/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "amount=" + amount
+            })
+            .then(response => response.json())
+            .then(data => {
+                var options = {
+                    "key": "{{ RAZORPAY_KEY_ID }}",
+                    "amount": data.amount,
+                    "currency": data.currency,
+                    "order_id": data.id,
+                    "name": "My Django Shop",
+                    "description": "Test Transaction",
+                    "handler": function (response) {
+                        fetch("/payments/verify-payment/", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: "razorpay_order_id=" + response.razorpay_order_id +
+                                  "&razorpay_payment_id=" + response.razorpay_payment_id +
+                                  "&razorpay_signature=" + response.razorpay_signature
+                        })
+                        .then(response => response.json())
+                        .then(data => alert(data.status));
+                    },
+                    "prefill": {
+                        "name": "User Name",
+                        "email": "user@example.com",
+                        "contact": "9999999999"
+                    },
+                    "theme": { "color": "#3399cc" }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            });
+        }
+    </script>
+</body>
+</html>

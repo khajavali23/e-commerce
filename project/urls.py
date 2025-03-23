@@ -1,47 +1,43 @@
-"""
-URL configuration for project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
-from core.views import home, login, look1, productdetilspage, sale, shoppage, wishlist, womenswear, cart, get_products, base
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
 
+from core.views import (
+    home, look1, sale, shoppage, wishlist,
+    womenswear, get_products, base, cart_view, update_cart, add_to_cart,
+    add_to_wishlist, remove_from_wishlist, user_login, logined_page,
+    checkout, order_detail,productdetilspage
 
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('login', login, name='login'),
-    path('look', look1,name='look'),
-    path('productdetilspage', productdetilspage, name='productdetilspage'),
-    path('sale/<str:pk>/', sale, name='sale'),
-    path('shoppage', shoppage,name='shoppage'),
-    path('wishlist', wishlist, name='wishlist'),
-    path('womenswear', womenswear, name='womenswear'),
-    path('cart', cart, name='cart'),
-    path('api/products/', get_products, name='get_products'),
-    path('base',base,name='base')
+    path('login/', user_login, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('logined/', logined_page, name='logined'),
+    path('look1/', look1, name='look1'), 
+    path('product/<int:product_id>/', productdetilspage, name='productdetilspage'),
+    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('cart/', cart_view, name='cart'),
 
-    
+    path('sale/<str:pk>/', sale, name='sale'),
+    path('shoppage/', shoppage, name='shoppage'),
+    path('wishlist/', wishlist, name='wishlist'),  # ✅ Removed duplicate
+    path('womenswear/', womenswear, name='womenswear'),
+    path('cart/', cart_view, name='cart'),
+    path('api/products/', get_products, name='get_products'),
+    path('base/', base, name='base'),
+    path("update-cart/<int:item_id>/", update_cart, name="update-cart"),
+    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path("add-to-wishlist/<int:product_id>/", add_to_wishlist, name="add_to_wishlist"),
+    path('remove-from-wishlist/<int:item_id>/', remove_from_wishlist, name='remove_from_wishlist'),
+    path('checkout/', checkout, name='checkout'),
+    path('order/<int:order_id>/', order_detail, name='order_detail'),  # ✅ Added missing order_detail URL
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

@@ -1,0 +1,53 @@
+<div class="order-success">
+  <h2>🎉 Order Placed Successfully!</h2>
+  <p class="order-id">Your Order ID: <span>{{ order.id }}</span></p>
+  <p class="payment-method">Payment Method: <span>{{ order.get_payment_method_display }}</span></p>
+  <p class="status">Status: <span>{{ order.get_status_display }}</span></p>
+  <a href="{% url 'home' %}" class="continue-btn">Continue Shopping</a>
+</div>
+
+<style>
+  .order-success {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+  }
+  
+  .order-success h2 {
+      color: #28a745;
+      font-size: 24px;
+      margin-bottom: 15px;
+  }
+
+  .order-success p {
+      font-size: 16px;
+      color: #333;
+      margin: 8px 0;
+  }
+
+  .order-success span {
+      font-weight: bold;
+      color: #007bff;
+  }
+
+  .continue-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s ease-in-out;
+  }
+
+  .continue-btn:hover {
+      background: #0056b3;
+  }
+</style>

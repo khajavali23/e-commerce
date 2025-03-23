@@ -1,54 +1,49 @@
-{% load  static %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  {% extends "base.html" %}
 
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block title %}Home - My Website{% endblock %}
   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  
-  
-</head>
-<body>
+  {% block content %}
+{% load static %}
 
 
   <div class="container my-5">
     <div class="row">
         <!-- Product Image -->
-        <div class="col-md-6">
-          <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image" />
+        <div class="col-md-6 text-center">
+            <img src="{{ product.image.url }}" id="mainImage" class="img-fluid default-img rounded shadow" alt="{{ product.name }}" />
+
+            <!-- Thumbnail Images Centered -->
+            <div class="d-flex justify-content-center mt-3">
+                {% if product.image1 %}
+                    <img src="{{ product.image1.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
+                {% endif %}
+                {% if product.image2 %}
+                    <img src="{{ product.image2.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
+                {% endif %}
+                {% if product.image3 %}
+                    <img src="{{ product.image3.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
+                {% endif %}
+                {% if product.image4 %}
+                    <img src="{{ product.image4.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
+                {% endif %}
+            </div>
         </div>
 
         <!-- Product Details -->
         <div class="col-md-6">
-            <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Collections</a></li>
-                    <li class="breadcrumb-item active">Japan Satin</li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'shoppage' %}">Collections</a></li>
+                    <li class="breadcrumb-item active">{{ product.category.name }}</li>
                 </ol>
             </nav>
 
-            <!-- Product Title & Price -->
-            <h2 class="fw-bold">Classy Yellow Floral Digital Printed Japan Satin Fabric</h2>
-            <p class="text-muted">SKU: <strong>JS-0-TA06831P8-110</strong></p>
-            <h4 class="text-danger fw-bold">₹296.00 per Meter</h4>
+            <h2 class="fw-bold">{{ product.name }}</h2>
+            <p class="text-muted">SKU: <strong>{{ product.sku }}</strong></p>
+            <h4 class="text-danger fw-bold">₹{{ product.price }} per Meter</h4>
 
-            <!-- Key Benefits -->
             <ul class="product-benefits">
                 <li>✅ Free domestic shipping</li>
                 <li>✅ Pay on delivery available</li>
@@ -68,18 +63,27 @@
             </div>
 
             <p class="text-muted mt-2">Tax included.</p>
-            <button class="btn btn-primary mt-3 w-100">🛒 Add to Cart</button>
-            <button class="btn btn-success mt-2 w-100">⚡ Buy Now</button>
+            <form action="{% url 'add_to_cart' product.id %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="quantity" id="cartQuantity" value="1">
+              <button type="submit" class="btn btn-primary mt-3 w-100">🛒 Add to Cart</button>
+          </form>
+          
+          <form action="{% url 'add_to_wishlist' product.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger mt-2 w-100">❤️ Add to Wishlist</button>
+        </form>
 
-            <!-- Inquiry Form (Floating) -->
-            <div class="inquiry-form mt-4">
-                <h5>Ask for Wholesale or Custom Order</h5>
+
+            <!-- Inquiry Form -->
+            <div class="inquiry-form mt-4 p-3 border rounded">
+                <h5>Wholesale or Custom Order Inquiry</h5>
                 <form>
                     <input type="text" class="form-control mb-2" placeholder="Your Name" required>
                     <input type="email" class="form-control mb-2" placeholder="Your Email" required>
                     <input type="tel" class="form-control mb-2" placeholder="Your Phone" required>
                     <textarea class="form-control mb-2" placeholder="Your Message" rows="3" required></textarea>
-                    <button type="submit" class="btn w-100">Send Inquiry</button>
+                    <button type="submit" class="btn btn-dark w-100">📩 Send Inquiry</button>
                 </form>
             </div>
         </div>
@@ -89,17 +93,38 @@
     <div class="product-details mt-5">
         <h4>Fabric Specifications</h4>
         <ul>
-            <li><strong>Fabric:</strong> Japan Satin</li>
-            <li><strong>Width:</strong> 110 CM | 43 Inch</li>
-            <li><strong>Weight:</strong> 100 Grams per Running Meter</li>
-            <li><strong>Composition:</strong> Polyester</li>
-            <li><strong>Uses:</strong> Dresses, sarees, tops, evening apparel, upholstery</li>
-            <li><strong>Wash Care:</strong> Gentle hand wash in cold water</li>
-            <li><strong>Origin:</strong> Made In India</li>
+            <li><strong>Fabric:</strong> {{ product.category.name }}</li>
+            <li><strong>Width:</strong> {{ product.width }} CM | {{ product.width_inches }} Inch</li>
+            <li><strong>Weight:</strong> {{ product.weight }} Grams per Running Meter</li>
+            <li><strong>Composition:</strong> {{ product.composition }}</li>
+            <li><strong>Uses:</strong> {{ product.uses }}</li>
+            <li><strong>Wash Care:</strong> {{ product.wash_care }}</li>
+            <li><strong>Origin:</strong> Made In {{ product.origin }}</li>
         </ul>
     </div>
+
+    <!-- Related Products Section -->
+    <div class="related-products mt-5">
+        <h4>Related Products</h4>
+        <div class="row">
+            {% for related in related_products %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ related.image.url }}" class="card-img-top" alt="{{ related.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ related.name }}</h5>
+                            <p class="card-text">₹{{ related.price }}</p>
+                            <a href="{% url 'productdetailspage' related.id %}" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-   
+
+
+
   
 
 
@@ -177,7 +202,16 @@
                 </select>
                 <input type="text" class="form-control w-25" placeholder="Enter Phone Number">
             </div>
+        
+            <!-- Submit Button -->
+            <div class="mt-3">
+                <button class="btn btn-primary" style="    width: 50%;
+    margin: auto;
+    background: red;
+}">Get Coupon</button>
+            </div>
         </div>
+        
         
       </div>
       </div>
@@ -1219,8 +1253,34 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{% static 'js/script.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const decreaseBtn = document.getElementById("decrease");
+    const increaseBtn = document.getElementById("increase");
+    const quantityInput = document.getElementById("quantity");
+  
+    let quantity = 1; // Initial quantity
+  
+    decreaseBtn.addEventListener("click", function () {
+        if (quantity > 1) {
+            quantity--;
+            updateQuantity();
+        }
+    });
+  
+    increaseBtn.addEventListener("click", function () {
+        quantity++;
+        updateQuantity();
+    });
+  
+    function updateQuantity() {
+        quantityInput.value = `${quantity} Meter`;
+    }
+  });
+</script>
+
+
+    
+{% endblock %}
+
