@@ -346,28 +346,28 @@
         <!-- Product Cards with col-md-4 -->
         
       {% for x in japan_products %}          
-<div class="product-card-container" style="width: 20%;">
-  <div class="product-card">
-    <!-- Product Image -->
-    <div class="product-image" style="position: relative;">
-      <a href="{% url 'productdetilspage' x.id %}">
-        <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
-        <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
-      </a>
-      <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">new</button>
-    </div>
+              <div class="product-card-container" style="width: 20%;">
+                <div class="product-card">
+                  <!-- Product Image -->
+                  <div class="product-image" style="position: relative;">
+                    <a href="{% url 'productdetilspage' x.id %}">
+                      <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
+                      <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
+                    </a>
+                    <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">new</button>
+                  </div>
 
-    <!-- Product Details -->
-    <div class="product-details">
-      <h6 class="product-title">
-        <a href="{% url 'productdetilspage' x.id %}">{{ x.name }}</a>
-      </h6>
-      <p class="product-fabric">{{ x.description }}</p>
-      <p class="price">{{ x.price }} <span style="font-size: 10px;">per meter</span></p>
-    </div>
-  </div>
-</div>
-{% endfor %}
+                  <!-- Product Details -->
+                  <div class="product-details">
+                    <h6 class="product-title">
+                      <a href="{% url 'productdetilspage' x.id %}">{{ x.name }}</a>
+                    </h6>
+                    <p class="product-fabric">{{ x.description }}</p>
+                    <p class="price">{{ x.price }} <span style="font-size: 10px;">per meter</span></p>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
         
 
         <div></div>
@@ -414,29 +414,39 @@
 
       <div class="row mt-3">
         <!-- Product Cards with col-md-4 -->
-        {% for x in Japan_Stain_Fabr %}          
-        <div class="product-card-container" style="width: 20%;">
-          <div class="product-card">
+        {% for y in japan_stain_fabr %}          
+    <div class="product-card-container" style="width: 20%;">
+        <div class="product-card">
             <!-- Product Image -->
             <div class="product-image" style="position: relative;">
-              <a href="{% url 'productdetilspage' x.id %}">
-                <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
-                <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
-              </a>
-              <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">new</button>
+                <a href="{% url 'productdetilspage' y.id %}">
+                    {% if y.image %}
+                        <img src="{{ y.image.url }}" class="img-fluid default-img" alt="{{ y.name }}" />
+                    {% else %}
+                        <img src="/static/images/default.jpg" class="img-fluid default-img" alt="No Image Available" />
+                    {% endif %}
+
+                    {% if y.hover_image %}
+                        <img src="{{ y.hover_image.url }}" class="img-fluid hover-img" alt="{{ y.name }} - Hover" />
+                    {% else %}
+                        <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
+                    {% endif %}
+                </a>
+                <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">new</button>
             </div>
-        
+
             <!-- Product Details -->
             <div class="product-details">
-              <h6 class="product-title">
-                <a href="{% url 'productdetilspage' x.id %}">{{ x.name }}</a>
-              </h6>
-              <p class="product-fabric">{{ x.description }}</p>
-              <p class="price">{{ x.price }} <span style="font-size: 10px;">per meter</span></p>
+                <h6 class="product-title">
+                    <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
+                </h6>
+                <p class="product-fabric">{{ y.description }}</p>
+                <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
             </div>
-          </div>
         </div>
-        {% endfor %}
+    </div>
+{% endfor %}
+
         <div></div>
         <!-- End of row -->
       </div>

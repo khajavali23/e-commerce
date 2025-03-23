@@ -1,142 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Detail</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+{% extends "base.html" %}
 
-        .container {
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            transition: 0.3s;
-        }
+{% block title %}Order Details - My Website{% endblock %}
 
-        .container:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
+{% block content %}
+{% load static %}
 
-        h1 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
+<style>
+    .order-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
 
-        p {
-            font-size: 16px;
-            color: #444;
-            margin: 8px 0;
-        }
+    .order-box {
+        width: 500px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
-        .status {
-            font-weight: bold;
-            color: green;
-            font-size: 18px;
-        }
+    .order-header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
 
-        .total {
-            font-size: 18px;
-            font-weight: bold;
-            color: #d9534f;
-            margin-top: 10px;
-        }
+    .order-info, .order-status, .order-total {
+        font-size: 16px;
+        color: #555;
+        margin: 5px 0;
+    }
 
-        h2 {
-            font-size: 20px;
-            color: #333;
-            margin-top: 15px;
-        }
+    .items-list {
+        list-style: none;
+        padding: 0;
+    }
 
-        /* Order Items */
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 10px 0;
-        }
+    .order-item {
+        background: #f1f1f1;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
 
-        li {
-            background: #e9ecef;
-            padding: 12px;
-            margin: 6px 0;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #222;
-            transition: 0.3s;
-        }
+    .payment-section {
+        margin-top: 15px;
+        text-align: left;
+    }
 
-        li:hover {
-            background: #dee2e6;
-        }
+    .payment-section label {
+        display: block;
+        font-size: 16px;
+        margin: 5px 0;
+        cursor: pointer;
+    }
 
-        /* Payment Selection */
-        .payment-options {
-            margin-top: 15px;
-            text-align: left;
-            font-size: 16px;
-            padding: 10px;
-            border-radius: 5px;
-            background: #f8f9fa;
-        }
+    .confirm-order-btn {
+        width: 100%;
+        background: #28a745;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-        .payment-options label {
-            cursor: pointer;
-            font-weight: bold;
-            color: #007bff;
-        }
+    .confirm-order-btn:hover {
+        background: #218838;
+    }
+</style>
 
-        .payment-options input {
-            margin-right: 8px;
-        }
-
-        /* Button */
-        .place-order-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            margin-top: 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 18px;
-            transition: 0.3s;
-            display: block;
-            width: 100%;
-        }
-
-        .place-order-btn:hover {
-            background: #218838;
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>🛍️ Order Details</h1>
-        <p><strong>Order ID:</strong> {{ order.id }}</p>
-        <p class="status"><strong>Status:</strong> {{ order.status }}</p>
-        <p class="total"><strong>Total Price:</strong> ${{ order.total_price }}</p>
+<div class="order-wrapper">
+    <div class="order-box">
+        <h1 class="order-header">🛍️ Order Details</h1>
+        <p class="order-info"><strong>Order ID:</strong> {{ order.id }}</p>
+        <p class="order-status"><strong>Status:</strong> {{ order.status }}</p>
+        <p class="order-total"><strong>Total Price:</strong> ${{ order.total_price }}</p>
 
         <h2>📦 Items Ordered:</h2>
-        <ul>
+        <ul class="items-list">
             {% for item in order.items.all %}
-                <li>
+                <li class="order-item">
                     <strong>{{ item.product.name }}</strong> - 
                     Quantity: {{ item.quantity }} - 
                     Price: ${{ item.price }}
@@ -145,18 +98,30 @@
         </ul>
 
         <!-- Payment Method Selection -->
-        <form method="POST" action="{% url 'place_order' order.id %}">
-
-
+        <form id="payment-form" method="POST" action="{% url 'place_order' order.id %}">
             {% csrf_token %}
-            <div class="payment-options">
+            <div class="payment-section">
                 <label>
-                    <input type="radio" name="payment_method" value="cod" checked> Cash on Delivery (COD)
+                    <input type="radio" name="payment_method" value="cod" checked> ✅ Cash on Delivery (COD)
+                </label>
+                <label>
+                    <input type="radio" name="payment_method" value="online"> 💳 Pay Online
                 </label>
             </div>
-            <button type="submit" class="place-order-btn">✅ Place Order</button>
+            <button type="submit" class="confirm-order-btn" id="order-btn">✅ Place Order</button>
         </form>
+        
+        <script>
+            document.getElementById("order-btn").addEventListener("click", function(event) {
+                let paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+                if (paymentMethod === "online") {
+                    event.preventDefault(); // Prevent form submission
+                    window.location.href = "{% url 'order_payment' order.id %}"; // Redirect to payment
+                }
+            });
+        </script>
+        
     </div>
+</div>
 
-</body>
-</html>
+{% endblock %}

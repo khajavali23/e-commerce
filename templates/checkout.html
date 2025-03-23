@@ -1,167 +1,95 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Form</title>
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .order-form {
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .order-form:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 16px;
-            color: #555;
-            margin: 10px 0 5px;
-            text-align: left;
-        }
-
-        textarea {
-            width: 100%;
-            height: 80px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 10px;
-            font-size: 14px;
-            resize: none;
-            transition: 0.3s;
-        }
-
-        textarea:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        /* Payment Method Section */
-        .payment-options {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 6px;
-            background: #f8f9fa;
-        }
-
-        .payment-options label {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            color: #007bff;
-            cursor: pointer;
-        }
-
-        .payment-options input {
-            margin-right: 8px;
-        }
-
-        /* Submit Button */
-        .place-order-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            margin-top: 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 18px;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .place-order-btn:hover {
-            background: #218838;
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body>
-
-    <form id="orderForm" method="POST" class="order-form">
-        {% csrf_token %}
-        <h3>📝 Add an Order Note</h3>
-        <label for="order_note">Order Note:</label>
-        <textarea name="order_note" placeholder="Add any special instructions..."></textarea>
-
-        <h3>💳 Select Payment Method</h3>
-        <div class="payment-options">
-            <label>
-                <input type="radio" name="payment_method" value="cod" checked> Cash on Delivery (COD)
-            </label>
-            <label>
-                <input type="radio" name="payment_method" value="online"> Online Payment
-            </label>
+    <header>
+        <h1>My E-Commerce Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="product-list">
+        <div class="product">
+            <img src="product.jpg" alt="Product">
+            <h2>Product Name</h2>
+            <p>$50.00</p>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-
-        <button type="submit" class="place-order-btn">✅ Place Order</button>
-    </form>
-
+    </section>
+    
+    <section class="checkout">
+        <h2>Checkout</h2>
+        <form id="orderForm">
+            <label>
+                <input type="radio" name="payment_method" value="cod" checked> Cash on Delivery
+            </label>
+            <label>
+                <input type="radio" name="payment_method" value="online"> Pay Online
+            </label>
+            <button type="submit" class="place-order-btn">✅ Place Order</button>
+        </form>
+    </section>
+    
     <script>
-        document.getElementById("orderForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form from submitting immediately
-
-            let paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-
-            if (paymentMethod === "online") {
-                var options = {
-                    "key": "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key ID
-                    "amount": 50000, // Amount in paise (50000 = 500 INR)
-                    "currency": "INR",
-                    "name": "Your Store",
-                    "description": "Order Payment",
-                    "image": "https://yourwebsite.com/logo.png", // Your company logo
-                    "handler": function (response) {
-                        alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-                        document.getElementById("orderForm").submit(); // Submit the form after payment
-                    },
-                    "prefill": {
-                        "name": "Customer Name",
-                        "email": "customer@example.com",
-                        "contact": "9999999999"
-                    },
-                    "theme": {
-                        "color": "#28a745"
-                    }
-                };
-
-                var rzp = new Razorpay(options);
-                rzp.open();
-            } else {
-                document.getElementById("orderForm").submit(); // Normal form submission for COD
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            let paymentRadios = document.querySelectorAll('input[name="payment_method"]');
+            let placeOrderBtn = document.querySelector('.place-order-btn');
+        
+            paymentRadios.forEach(radio => {
+                radio.addEventListener("change", function () {
+                    placeOrderBtn.textContent = this.value === "online" ? "💳 Pay Online" : "✅ Place Order";
+                });
+            });
+        
+            document.getElementById("orderForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                let paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+        
+                if (paymentMethod === "online") {
+                    var options = {
+                        "key": "YOUR_TEST_RAZORPAY_KEY", // Replace with your test key from Razorpay
+                        "amount": 50000, // 500 INR in paise
+                        "currency": "INR",
+                        "name": "Your Store",
+                        "description": "Order Payment",
+                        "image": "https://yourwebsite.com/logo.png",
+                        "handler": function (response) {
+                            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                            document.getElementById("orderForm").submit();
+                        },
+                        "prefill": {
+                            "name": "Test User",
+                            "email": "test@example.com",
+                            "contact": "9999999999"
+                        },
+                        "theme": {
+                            "color": "#28a745"
+                        }
+                    };
+                    
+                    var rzp = new Razorpay(options);
+                    rzp.open();
+                    // Handle Payment Failure
+                    rzp.on('payment.failed', function (response) {
+                        alert("Payment failed! Reason: " + response.error.description);
+                    });
+                } else {
+                    document.getElementById("orderForm").submit();
+                }
+            });
         });
+        
     </script>
-
 </body>
 </html>

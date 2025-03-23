@@ -298,6 +298,7 @@
      <p class="fotter-pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi sed corrupti quae voluptas unde, ea veniam quod quia minus!</p>
   </div>
 </div>
+{% csrf_token %}
 
 <script>
   document.getElementById("country").addEventListener("change", function() {
@@ -305,6 +306,60 @@
     let countryCode = selectedOption.getAttribute("data-code") || "+";
     document.getElementById("phone").placeholder = countryCode + " Phone Number";
   });
+
+  document.getElementById("unlockBtn").addEventListener("click", function() {
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let country = document.getElementById("country").value;
+  
+    if (!email || !phone || !country) {
+        alert("Please fill in all fields.");
+        return;
+    }
+  
+    fetch("/subscribe/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": getCookie("csrftoken") // Get CSRF Token
+        },
+        body: new URLSearchParams({
+            "email": email,
+            "phone": phone,
+            "country": country
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("country").value = "";
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+  });
+  
+  // Function to get CSRF Token (required for Django POST requests)
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        let cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  
+  
 </script>
 
 

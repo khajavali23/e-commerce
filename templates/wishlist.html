@@ -32,6 +32,7 @@
                         <span class="text-muted">₹{{ item.product.price }}</span>
                         <div class="wishlist-actions mt-2">
                             <button class="btn btn-move-cart" onclick="moveToCart({{ item.id }})">Move to Cart</button>
+
                             
                             <!-- Corrected Delete Button -->
                             <button class="btn btn-remove" onclick="removeFromWishlist({{ item.id }})">
@@ -42,7 +43,7 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
+</div>
         
         <!-- CSRF Token Hidden Input (Outside Button) -->
         <form id="csrfForm">
@@ -82,6 +83,21 @@
     // Get CSRF Token
     function getCSRFToken() {
         return document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        function moveToCart(itemId) {
+            fetch(`/move-to-cart/${itemId}/`, {
+                method: "GET"
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/cart/";  // Redirect to the cart page
+                } else {
+                    alert("Error moving item to cart.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+        
     }
 </script>
 
