@@ -39,6 +39,8 @@ urlpatterns = [
     path('checkout/', checkout, name='checkout'),
     path('order/<int:order_id>/', order_detail, name='order_detail'),
     path('order-success/', order_success, name='order_success'),
+    path("cart/", cart_view, name="cart_page"),  # Define a view for cart display
+    path("add-to-cart/<int:product_id>/", add_to_cart, name="add_to_cart"),
 ]
 
 if settings.DEBUG:

@@ -16,41 +16,122 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from .models import Order  # Import your Order model
+from .models import Order  
 
 
 from django.conf import settings
 
-# Razorpay Client Object Create చేయండి
-
-
-
-
-
-
-
-
-
-
-
-
-
 def home(request):
-    category = get_object_or_404(Category, name='Polyester Fabric')
-    category_2 = get_object_or_404(Category, name='Japan Stain Fabr')
-    
-    
-    japan_products = Product.objects.filter(category=category)
-    japan_stain_fabr = Product.objects.filter(category=category_2)
-    
-    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+    # Fetch required categories
+    new_arrived_category = Category.objects.filter(name="New Arrived").first()
+    japan_satin_fabric_category = Category.objects.filter(name="Japan Satin Fabric").first()
+    trending_collection_category = Category.objects.filter(name="Trending Collection").first()
+    fabric_set_category = Category.objects.filter(name="Fabric Set").first()
+    plain_fabrics_category = Category.objects.filter(name="Plain Fabrics").first()
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+    patterned_fabric_category = Category.objects.filter(name="Patterned Fabric").first()
+    best_seller_category = Category.objects.filter(name="Best Seller").first()
+    pure_viscose_fabrics_category = Category.objects.filter(name="Pure & Viscose Fabrics").first()
+
+    # Fetch products for the categories if they exist
+    new_arrived_products = Product.objects.filter(category=new_arrived_category) if new_arrived_category else []
+    japan_satin_fabric_products = Product.objects.filter(category=japan_satin_fabric_category) if japan_satin_fabric_category else []
+    trending_collection_products = Product.objects.filter(category=trending_collection_category) if trending_collection_category else []
+    fabric_set_products = Product.objects.filter(category=fabric_set_category) if fabric_set_category else []
+    plain_fabrics_products = Product.objects.filter(category=plain_fabrics_category) if plain_fabrics_category else []
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+    patterned_fabric_products = Product.objects.filter(category=patterned_fabric_category) if patterned_fabric_category else []
+    best_seller_products = Product.objects.filter(category=best_seller_category) if best_seller_category else []
+    pure_viscose_fabrics_products = Product.objects.filter(category=pure_viscose_fabrics_category) if pure_viscose_fabrics_category else []
+
+    parent_categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
 
     context = {
-        'japan_products': japan_products,
-        'japan_stain_fabr': japan_stain_fabr,
-        'categories': categories
+        'new_arrived_products': new_arrived_products,
+        'japan_satin_fabric_products': japan_satin_fabric_products,
+        'trending_collection_products': trending_collection_products,
+        'fabric_set_products': fabric_set_products,
+        'plain_fabrics_products': plain_fabrics_products,
+        'featured_collection_products': featured_collection_products,
+        'patterned_fabric_products': patterned_fabric_products,
+        'best_seller_products': best_seller_products,
+        'pure_viscose_fabrics_products': pure_viscose_fabrics_products,
+        'categories': parent_categories
     }
+    
     return render(request, 'index.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Category, Product  # Ensure correct model import
+
+from django.shortcuts import render
+from core.models import Category, Product
+from django.shortcuts import render
+from core.models import Category, Product
+
+from django.shortcuts import render
+from core.models import Category, Product
+from django.shortcuts import render
+from core.models import Category, Product
+
+from django.shortcuts import render
+from core.models import Category, Product
+
+def home(request):
+    # Fetch required categories
+    new_arrived_category = Category.objects.filter(name="New Arrived").first()
+    japan_satin_fabric_category = Category.objects.filter(name="Japan Satin Fabric").first()
+    trending_collection_category = Category.objects.filter(name="Trending Collection").first()
+    fabric_set_category = Category.objects.filter(name="Fabric Set").first()
+    plain_fabrics_category = Category.objects.filter(name="Plain Fabrics").first()
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+    patterned_fabric_category = Category.objects.filter(name="Patterned Fabric").first()
+    best_seller_category = Category.objects.filter(name="Best Seller").first()
+
+    # Fetch products for the categories if they exist
+    new_arrived_products = Product.objects.filter(category=new_arrived_category) if new_arrived_category else []
+    japan_satin_fabric_products = Product.objects.filter(category=japan_satin_fabric_category) if japan_satin_fabric_category else []
+    trending_collection_products = Product.objects.filter(category=trending_collection_category) if trending_collection_category else []
+    fabric_set_products = Product.objects.filter(category=fabric_set_category) if fabric_set_category else []
+    plain_fabrics_products = Product.objects.filter(category=plain_fabrics_category) if plain_fabrics_category else []
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+    patterned_fabric_products = Product.objects.filter(category=patterned_fabric_category) if patterned_fabric_category else []
+    best_seller_products = Product.objects.filter(category=best_seller_category) if best_seller_category else []
+
+    parent_categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+
+    context = {
+        'new_arrived_products': new_arrived_products,
+        'japan_satin_fabric_products': japan_satin_fabric_products,
+        'trending_collection_products': trending_collection_products,
+        'fabric_set_products': fabric_set_products,
+        'plain_fabrics_products': plain_fabrics_products,
+        'featured_collection_products': featured_collection_products,
+        'patterned_fabric_products': patterned_fabric_products,
+        'best_seller_products': best_seller_products,
+        'categories': parent_categories
+    }
+    
+    return render(request, 'index.html', context)
+
+
+
+
+
+
+
 
 
 def user_login(request):
@@ -176,10 +257,18 @@ def move_to_cart(request, item_id):
     return redirect('cart') 
 
 @login_required
+
+
 def add_to_cart(request, product_id):
+    # Ensure user is authenticated
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to log in to add items to the cart.")
+        return redirect("login")  # Redirect to login page if not logged in
+
     product = get_object_or_404(Product, id=product_id)
+    
+    # Get or create a cart for the user
     cart, created = Cart.objects.get_or_create(user=request.user)
-    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
 
     # Check if the product is already in the cart
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
@@ -191,16 +280,9 @@ def add_to_cart(request, product_id):
 
     messages.success(request, f"{product.name} added to cart successfully!")
 
-    # Fetch all cart items after adding the product
-    cart_items = cart.cartitem_set.all()
+    # Redirect to cart page instead of rendering directly
+    return redirect("cart_page")  # Ensure "cart_page" is defined in urls.py
 
-    # Merge the dictionaries
-    context = {
-        'categories': categories,
-        'cart_items': cart_items  # Add cart items to the existing context
-    }
-
-    return render(request, 'cart.html', context)
 
 
 @login_required
@@ -346,3 +428,18 @@ def order_payment(request, order_id):
     })
 def payment_success(request):
     return render(request, "payment_success.html")
+
+def cart_view(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    cart = Cart.objects.filter(user=request.user).first()
+    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related("subcategories")
+    cart_items = cart.cartitem_set.all() if cart else []
+
+    context = {
+        "categories": categories,
+        "cart_items": cart_items,
+    }
+
+    return render(request, "cart.html", context)

@@ -19,7 +19,7 @@
                     <img src="{{ product.image1.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
                 {% endif %}
                 {% if product.image2 %}
-                    <img src="{{ product.image2.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
+                    <img src="{{ product.image2.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)" >
                 {% endif %}
                 {% if product.image3 %}
                     <img src="{{ product.image3.url }}" class="img-thumbnail thumbnail-img mx-2 shadow-sm" width="80" onclick="changeImage(this)">
@@ -45,12 +45,13 @@
             <h4 class="text-danger fw-bold">₹{{ product.price }} per Meter</h4>
 
             <ul class="product-benefits">
-                <li>✅ Free domestic shipping</li>
-                <li>✅ Pay on delivery available</li>
-                <li>✅ Secure payment by RazorPay</li>
-                <li>📦 <strong>Estimated Ship by:</strong> Mon, Mar 24</li>
-                <li>💬 Ask for fractional quantity or wholesale</li>
-            </ul>
+              <li><i class="fas fa-shipping-fast text-success"></i> Free domestic shipping</li>
+              <li><i class="fas fa-money-bill-wave text-success"></i> Pay on delivery available</li>
+              <li><i class="fas fa-lock text-success"></i> Secure payment by RazorPay</li>
+              <li><i class="fas fa-box text-primary"></i> <strong>Estimated Ship by:</strong> Mon, Mar 24</li>
+              <li><i class="fas fa-comments text-warning"></i> Ask for fractional quantity or wholesale</li>
+           </ul>
+          
 
             <!-- Quantity Selection -->
             <div class="quantity-box">
@@ -66,7 +67,7 @@
             <form action="{% url 'add_to_cart' product.id %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="quantity" id="cartQuantity" value="1">
-              <button type="submit" class="btn btn-primary mt-3 w-100">🛒 Add to Cart</button>
+              <button type="submit" class="btn  mt-3 w-100" style="background-color: black ; color: white;">🛒 Add to Cart</button>
           </form>
           
           <form action="{% url 'add_to_wishlist' product.id %}" method="POST">
@@ -74,7 +75,73 @@
             <button type="submit" class="btn btn-danger mt-2 w-100">❤️ Add to Wishlist</button>
         </form>
 
-
+        <style>
+          .buy-more-save-more {
+              font-size: 10px; /* Sets font size to 10px for all text */
+          }
+          .buy-more-save-more h4,
+          .buy-more-save-more h5,
+          .buy-more-save-more p,
+          .buy-more-save-more span {
+              font-size: 10px; /* Ensures consistency */
+          }
+        </style>
+        
+        <div class="buy-more-save-more mt-3 p-1 border rounded shadow-sm">
+            <h4 class="fw-bold text-center">BUY MORE & SAVE MORE</h4>
+            <p class="text-muted text-center mb-1">Use the below codes at checkout for discounts.</p>
+        
+            <div class="row">
+                <!-- Offer Box 1 -->
+                <div class="col-12 mb-1">
+                    <div class="offer-box p-1 border rounded text-center shadow-sm">
+                        <h5 class="text-danger fw-bold mb-1">Get 10% Off</h5>
+                        <p class="mb-1">Get 10% off on your first order.</p>
+                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">WELCOME</span></p>
+                    </div>
+                </div>
+        
+                <!-- Offer Box 2 -->
+                <div class="col-12 mb-1">
+                    <div class="offer-box p-1 border rounded text-center shadow-sm">
+                        <h5 class="text-danger fw-bold mb-1">Get 10% Off</h5>
+                        <p class="mb-1">Spend ₹2,999 & get 10% off.</p>
+                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">SAVE10</span></p>
+                    </div>
+                </div>
+        
+                <!-- Offer Box 3 -->
+                <div class="col-12 mb-1">
+                    <div class="offer-box p-1 border rounded text-center shadow-sm">
+                        <h5 class="text-danger fw-bold mb-1">Get 12% Off</h5>
+                        <p class="mb-1">Spend ₹4,999 & get 12% off.</p>
+                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">SAVE12</span></p>
+                    </div>
+                </div>
+        
+                <!-- Offer Box 4 -->
+                <div class="col-12 mb-1">
+                    <div class="offer-box p-1 border rounded text-center shadow-sm">
+                        <h5 class="text-danger fw-bold mb-1">50% Off on Plain Fabric</h5>
+                        <p class="mb-1">Buy 6m & get 50% off on 2m dyed fabric.</p>
+                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">PLAIN50</span></p>
+                    </div>
+                </div>
+        
+                <!-- Offer Box 5 -->
+                <div class="col-12 mb-1">
+                    <div class="offer-box p-1 border rounded text-center shadow-sm">
+                        <h5 class="text-danger fw-bold mb-1">Bulk Discount</h5>
+                        <p class="mb-1">For bulk orders, contact us.</p>
+                        <button class="btn btn-dark w-100 btn-sm">📩 Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      
+        
+      
             <!-- Inquiry Form -->
             <div class="inquiry-form mt-4 p-3 border rounded">
                 <h5>Wholesale or Custom Order Inquiry</h5>

@@ -262,42 +262,59 @@
 
 
   
-<div class="main-footer main-cate">
-  <div class="parent-div">
-     <h4>Sign up and Save 10%</h4>
-     <p>Sign up today and get a 10% discount code towards your first purchase.</p>
-     <input class="input-design" type="email" id="email" name="email" placeholder="Email" required>
-     
-     <div style="display: flex; gap: 5px; align-items: center;">
-       <!-- Country Dropdown with Scroll -->
-       <select class="input-design" id="country" name="country" style="width: 30%; height: 50px; overflow-y: auto; font-size: 10px;" >
-          <option value="" disabled selected>Select Country</option>
-          <option value="India" data-code="+91">India</option>
-          <option value="United States" data-code="+1">United States</option>
-          <option value="United Kingdom" data-code="+44">United Kingdom</option>
-          <option value="Canada" data-code="+1">Canada</option>
-          <option value="Australia" data-code="+61">Australia</option>
-          <option value="Germany" data-code="+49">Germany</option>
-          <option value="France" data-code="+33">France</option>
-          <option value="Japan" data-code="+81">Japan</option>
-          <option value="China" data-code="+86">China</option>
-          <option value="Brazil" data-code="+55">Brazil</option>
-          <option value="Italy" data-code="+39">Italy</option>
-          <option value="South Africa" data-code="+27">South Africa</option>
-          <option value="Russia" data-code="+7">Russia</option>
-       </select>
-
-       <!-- Phone Number Input with Default +91 -->
-       <input class="input-design" type="tel" id="phone" name="phone" 
-       placeholder="+91 Phone Number" 
-       pattern="[\+]?[0-9\s\-()]{7,15}" 
-       required style="width: 69%;">
-     </div>
-
-     <button class="input-design button-decrtion" id="unlockBtn">UNLOCK COUPON</button>
-     <p class="fotter-pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi sed corrupti quae voluptas unde, ea veniam quod quia minus!</p>
-  </div>
-</div>
+      <div class="main-footer main-cate">
+        <div class="parent-div" id="signup-container">
+           <h4>Sign up and Save 10%</h4>
+           <p>Sign up today and get a 10% discount code towards your first purchase.</p>
+           <input class="input-design" type="email" id="email" name="email" placeholder="Email" required>
+           
+           <div style="display: flex; gap: 5px; align-items: center;">
+             <select class="input-design" id="country" name="country" style="width: 30%; height: 50px; overflow-y: auto; font-size: 10px;">
+                <option value="" disabled selected>Select Country</option>
+                <option value="India" data-code="+91">India</option>
+                <option value="United States" data-code="+1">United States</option>
+                <option value="United Kingdom" data-code="+44">United Kingdom</option>
+                <option value="Canada" data-code="+1">Canada</option>
+                <option value="Australia" data-code="+61">Australia</option>
+                <option value="Germany" data-code="+49">Germany</option>
+                <option value="France" data-code="+33">France</option>
+                <option value="Japan" data-code="+81">Japan</option>
+                <option value="China" data-code="+86">China</option>
+                <option value="Brazil" data-code="+55">Brazil</option>
+                <option value="Italy" data-code="+39">Italy</option>
+                <option value="South Africa" data-code="+27">South Africa</option>
+                <option value="Russia" data-code="+7">Russia</option>
+             </select>
+      
+             <input class="input-design" type="tel" id="phone" name="phone" placeholder="+91 Phone Number" pattern="[\+]?[0-9\s\-()]{7,15}" required style="width: 69%;">
+           </div>
+      
+           <button class="input-design button-decrtion" id="unlockBtn">UNLOCK COUPON</button>
+           <p class="fotter-pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi sed corrupti quae voluptas unde, ea veniam quod quia minus!</p>
+        </div>
+      
+        <!-- Coupon Message (Hidden Initially) -->
+        <div id="coupon-container" style="display: none; text-align: center; padding: 20px; background: #f4f4f4; border-radius: 5px;">
+          <h3>Here's your discount:</h3>
+          <p style="font-size: 20px; font-weight: bold; background: #ffcc00; display: inline-block; padding: 10px 20px; border-radius: 5px;">WELCOME</p>
+          <p>10% off on order • One use per customer • Sign in Required</p>
+        </div>
+      </div>
+      
+      <script>
+        document.getElementById("unlockBtn").addEventListener("click", function () {
+          let email = document.getElementById("email").value;
+          let phone = document.getElementById("phone").value;
+          
+          if (email.trim() !== "" && phone.trim() !== "") {
+            document.getElementById("signup-container").style.display = "none";
+            document.getElementById("coupon-container").style.display = "block";
+          } else {
+            alert("Please enter a valid email and phone number.");
+          }
+        });
+      </script>
+      
 {% csrf_token %}
 
 <script>

@@ -2254,3 +2254,8 @@ body {
   font-weight: 500;
   color: white;
 }
+#mainImage:hover {
+  transform: none !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
