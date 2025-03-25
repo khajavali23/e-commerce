@@ -9,7 +9,7 @@ from core.views import (
     womenswear, get_products, base, cart_view, update_cart, add_to_cart,
     add_to_wishlist, remove_from_wishlist, user_login, logined_page,
     checkout, order_detail, productdetilspage, place_order, order_success,
-    move_to_cart, subscribe, order_payment, payment_success
+    move_to_cart, subscribe, order_payment, payment_success,newarrival_view, bestseller_view
 )
 
 urlpatterns = [
@@ -41,6 +41,10 @@ urlpatterns = [
     path('order-success/', order_success, name='order_success'),
     path("cart/", cart_view, name="cart_page"),  # Define a view for cart display
     path("add-to-cart/<int:product_id>/", add_to_cart, name="add_to_cart"),
+    path('newarrival/', newarrival_view, name='newarrival'),
+    path('bestseller/', bestseller_view, name='bestseller'),
+
+
 ]
 
 if settings.DEBUG:

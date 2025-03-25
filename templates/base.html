@@ -134,8 +134,11 @@
             <div class="main-base">
                 <nav>
                     <ul class="menu">
-                        <li><a href="#" style="color: black;">  NEW ARRIVAL</a></li> 
-                        <li><a href="#" style="color: black;"> BEST SELLER</a></li>
+                      <a href="{% url 'newarrival' %}" style="color: black;">NEW ARRIVAL</a>
+
+
+
+                        <li><a href="{% url 'bestseller' %}" style="color: black;"> BEST SELLER</a></li>
                         <li><a href="#" id="fabric__products" style="color: black;">  PRINTED FABRIC <i class="fa-solid fa-angle-down" ></i></a></li> 
                          
                     
@@ -430,11 +433,11 @@
         <ul class="list-unstyled">
           <li>
               <i class="fas fa-phone-alt"></i> 
-              <a href="tel:+917990105997" class="text-decoration-none text-dark">+91 799 0105 997</a>
+              <a href="tel:+917990105997" class="text-decoration-none text-dark" style="    text-decoration: underline !important;">+91 799 0105 997</a>
           </li>
           <li>
               <i class="fas fa-envelope"></i> 
-              <a href="mailto:example@example.com" class="text-decoration-none text-dark">Email Us</a>
+              <a href="mailto:example@example.com" class="text-decoration-none text-dark" style="    text-decoration: underline !important;">Email Us</a>
           </li>
       </ul>
     

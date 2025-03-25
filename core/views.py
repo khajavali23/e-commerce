@@ -181,13 +181,19 @@ def productdetilspage(request, product_id):
 
 
 def sale(request, pk):
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+    patterned_fabric_category = Category.objects.filter(name="Patterned Fabric").first()
     category = get_object_or_404(Category, id=pk)
     products = Product.objects.filter(category=category)
     categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+    patterned_fabric_products = Product.objects.filter(category=patterned_fabric_category) if patterned_fabric_category else []
 
     context = {
         'category': category,
         'products': products,
+         'featured_collection_products': featured_collection_products,
+        'patterned_fabric_products': patterned_fabric_products,
         'categories': categories
     }
 
@@ -210,6 +216,10 @@ def wishlist(request):
         'categories': categories
     }
     return render(request, "wishlist.html", context)
+
+
+def newarrival_view(request):
+    return render(request, 'newarrival.html')
 
 
 def add_to_wishlist(request, product_id):
@@ -404,11 +414,15 @@ def subscribe(request):
     return JsonResponse({"success": False, "message": "Invalid request."}, status=400)
 
 
+
 def order_payment(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
     
+    # Fetch Parent Categories
+    parent_categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+
     # Create Razorpay Order
     payment_data = {
         "amount": int(order.total_price * 100),  # Convert to paisa
@@ -424,8 +438,12 @@ def order_payment(request, order_id):
         "order": order,
         "razorpay_key": settings.RAZORPAY_KEY_ID,
         "payment_order_id": payment_order['id'],
-        "total_price": order.total_price
+        "total_price": order.total_price,
+        "categories": parent_categories  # Ensure this is passed to the template
     })
+
+
+
 def payment_success(request):
     return render(request, "payment_success.html")
 
@@ -443,3 +461,40 @@ def cart_view(request):
     }
 
     return render(request, "cart.html", context)
+
+
+def newarrival_view(request):  
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+    patterned_fabric_category = Category.objects.filter(name="Patterned Fabric").first()
+
+    products = Product.objects.all()  
+    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+    patterned_fabric_products = Product.objects.filter(category=patterned_fabric_category) if patterned_fabric_category else []
+
+    context = {
+        'products': products,
+        'featured_collection_products': featured_collection_products,
+        'patterned_fabric_products': patterned_fabric_products,
+        'categories': categories
+    }
+    return render(request, 'newarrival.html', context)
+
+def bestseller_view(request):
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+    patterned_fabric_category = Category.objects.filter(name="Patterned Fabric").first()
+
+    products = Product.objects.all()  
+    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+    patterned_fabric_products = Product.objects.filter(category=patterned_fabric_category) if patterned_fabric_category else []
+
+    context = {
+        'products': products,
+        'featured_collection_products': featured_collection_products,
+        'patterned_fabric_products': patterned_fabric_products,
+        'categories': categories
+    }
+    return render(request, 'bestseller.html', context)

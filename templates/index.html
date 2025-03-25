@@ -189,8 +189,8 @@
             <div class="nav-main">
                 <nav>
                     <ul class="menu">
-                        <li><a href="#">  NEW ARRIVAL</a></li> 
-                        <li><a href="#"> BEST SELLER</a></li>
+                        <li><a href="{% url 'newarrival' %}">  NEW ARRIVAL</a></li> 
+                        <li><a href="{% url 'bestseller' %}"> BEST SELLER</a></li>
                         <li><a href="#" id="fabric__products">  PRINTED FABRIC <i class="fa-solid fa-angle-down" ></i></a></li> 
                          
                     
@@ -334,15 +334,15 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="container arrived-contaic">
           <div class="left">
-            <h3>new arrived</h3>
+            <h3>New Arrived</h3>
           </div>
           <div class="right">
-            <p style="border-bottom: 2px solid black; font-weight: bold;">View All</p>
+            <p>View All</p>
           </div>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         
       {% for x in new_arrived_products %}          
@@ -357,7 +357,7 @@
               <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
               <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
             </a>
-            <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">TRENDING</button>
+            <button class="box-bttonbtton">FEATURED</button>
       
             <!-- Hover Icons -->
             <div class="hover-icons">
@@ -429,12 +429,12 @@
             <h3>Japan Stain Fabr</h3>
           </div>
           <div class="right">
-            <p style="border-bottom: 2px solid black; font-weight: bold;">View All</p>
+            <p >View All</p>
           </div>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for x in japan_satin_fabric_products %}          
       <div class="product-card-container" style="width: 20%;">
@@ -507,30 +507,30 @@
   <div class="row">
       <div class="col-md-3">
           <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori1.webp' %}" alt="Category 1" class="imag-cate">
+              <img src="{% static 'Image/home/poly.webp' %}" alt="Category 1" class="imag-cate">
               <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
+  padding-top: 20px; font-weight: bold;">Polyline</p>
           </div>
       </div>
       <div class="col-md-3">
           <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori2.webp' %}" alt="Category 2" class="imag-cate">
+              <img src="{% static 'Image/home/pure.webp' %}" alt="Category 2" class="imag-cate">
               <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
+  padding-top: 20px; font-weight: bold;">Pure</p>
           </div>
       </div>
       <div class="col-md-3">
           <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori3.webp' %}" alt="Category 3" class="imag-cate">
+              <img src="{% static 'Image/home/viscose.jpg' %}" alt="Category 3" class="imag-cate">
               <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;" >Red</p>
+  padding-top: 20px; font-weight: bold;" >Viscose</p>
           </div>
       </div>
       <div class="col-md-3">
           <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori4.webp' %}" alt="Category 4" class="imag-cate">
+              <img src="{% static 'Image/home/bemberg.webp' %}" alt="Category 4" class="imag-cate">
               <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
+  padding-top: 20px; font-weight: bold;">Bemberg</p>
           </div>
       </div>
   </div>
@@ -546,7 +546,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="container arrived-contaic">
           <div class="left">
-            <h3>trading collection</h3>
+            <h3>Trending Collection</h3>
           </div>
           <div class="right">
             <p style="border-bottom: 2px solid black; font-weight: bold;">View All</p>
@@ -554,7 +554,7 @@
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for y in  trending_collection_products %}          
         <div class="product-card-container" style="width: 20%;">
@@ -574,7 +574,7 @@
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                  <button class="box-bttonbtton">TRENDING</button>
               </div>
       
               <!-- Hover Icons -->
@@ -596,7 +596,7 @@
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -616,49 +616,49 @@
 <!--Trending Fabrics-->
 
 <div class="container main-cate">
-  <h3>Fabric Qualities</h3>
+  <h3>Trending Fabrics</h3>
   <div class="row">
       <div class="col-md-2">
           <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori1.webp' %}" alt="Category 1" class="imag-cate">
+              <img src="{% static 'Image/home/japan.webp' %}" alt="Category 1" class="imag-cate">
               <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
-          </div>
-      </div>
-      <div class="col-md-2">
-          <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori2.webp' %}" alt="Category 2" class="imag-cate">
-              <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
-          </div>
-      </div>
-      <div class="col-md-2">
-          <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori3.webp' %}" alt="Category 3" class="imag-cate">
-              <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;" >Red</p>
-          </div>
-      </div>
-      <div class="col-md-2">
-          <div class="image-cate"> 
-              <img src="{% static 'Image/home/categori4.webp' %}" alt="Category 4" class="imag-cate">
-              <p style="margin: 0px;
-  padding-top: 20px; font-weight: bold;">Red</p>
-          </div>
-   
-      </div>
-      <div class="col-md-2">
-        <div class="image-cate"> 
-            <img src="{% static 'Image/home/categori1.webp' %}" alt="Category 1" class="imag-cate">
-            <p style="margin: 0px;
-padding-top: 20px; font-weight: bold;">Red</p>
-        </div>
-    </div>
-    <div class="col-md-2">
-      <div class="image-cate"> 
-          <img src="{% static 'Image/home/categori1.webp' %}" alt="Category 1" class="imag-cate">
-          <p style="margin: 0px;
-padding-top: 20px; font-weight: bold;">Red</p>
+                            padding-top: 20px; font-weight: bold;">Japan Satin</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="image-cate"> 
+                                        <img src="{% static 'Image/home/linen.webp' %}" alt="Category 2" class="imag-cate">
+                                        <p style="margin: 0px;
+                            padding-top: 20px; font-weight: bold;">Linen</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="image-cate"> 
+                                        <img src="{% static 'Image/home/tusser.jpg' %}" alt="Category 3" class="imag-cate">
+                                        <p style="margin: 0px;
+                            padding-top: 20px; font-weight: bold;" >Tusser Silk</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="image-cate"> 
+                                        <img src="{% static 'Image/home/muslin.webp' %}" alt="Category 4" class="imag-cate">
+                                        <p style="margin: 0px;
+                            padding-top: 20px; font-weight: bold;">Muslin</p>
+                                    </div>
+                            
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="image-cate"> 
+                                      <img src="{% static 'Image/home/oragnaza.webp' %}" alt="Category 1" class="imag-cate">
+                                      <p style="margin: 0px;
+                          padding-top: 20px; font-weight: bold;">Organza</p>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="image-cate"> 
+                                    <img src="{% static 'Image/home/Kora.jpg' %}" alt="Category 1" class="imag-cate">
+                                    <p style="margin: 0px;
+                          padding-top: 20px; font-weight: bold;">Kora Silk</p>
       </div>
   </div>
   </div>
@@ -775,7 +775,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for y in fabric_set_products %}          
         <div class="product-card-container" style="width: 20%;">
@@ -795,7 +795,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                  <button class="box-bttonbtton" style="background-color: #ba4444;">SALE</button>
               </div>
       
               <!-- Hover Icons -->
@@ -817,7 +817,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -880,7 +880,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for y in plain_fabrics_products %}          
         <div class="product-card-container" style="width: 20%;">
@@ -900,7 +900,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                  <button class="box-bttonbtton">BEST SELLER</button>
               </div>
       
               <!-- Hover Icons -->
@@ -922,7 +922,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -978,7 +978,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for y in featured_collection_products %}          
         <div class="product-card-container" style="width: 20%;">
@@ -998,7 +998,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                  <button class="box-bttonbtton">FEATURED</button>
               </div>
       
               <!-- Hover Icons -->
@@ -1020,7 +1020,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric"> Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -1082,7 +1082,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
         {% for y in patterned_fabric_products %}          
         <div class="product-card-container" style="width: 20%;">
@@ -1102,7 +1102,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                 
               </div>
       
               <!-- Hover Icons -->
@@ -1124,7 +1124,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -1196,7 +1196,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         
 
         {% for y in best_seller_products %}          
@@ -1217,7 +1217,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">BEST SELLER</button>
+                  <button class="box-bttonbtton">BEST SELLER</button>
               </div>
       
               <!-- Hover Icons -->
@@ -1239,7 +1239,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -1305,10 +1305,10 @@ padding-top: 20px; font-weight: bold;">Red</p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <!-- Product Cards with col-md-4 -->
       
-        {% for y in pure_viscose_fabrics_products %}          
+        {% for y in  trending_collection_products %}          
         <div class="product-card-container" style="width: 20%;">
           <div class="product-card">
               <!-- Product Image -->
@@ -1326,7 +1326,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                           <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
                       {% endif %}
                   </a>
-                  <button style="position: absolute; left: 0px; bottom: 0; padding: 0px 20px;">New</button>
+                 
               </div>
       
               <!-- Hover Icons -->
@@ -1348,7 +1348,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
                   <h6 class="product-title">
                       <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
                   </h6>
-                  <p class="product-fabric">{{ y.description }}</p>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
                   <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
               </div>
           </div>
@@ -1399,7 +1399,7 @@ padding-top: 20px; font-weight: bold;">Red</p>
      </div>
 
      <button class="input-design button-decrtion" id="unlockBtn">UNLOCK COUPON</button>
-     <p class="fotter-pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi sed corrupti quae voluptas unde, ea veniam quod quia minus!</p>
+     <p class="fotter-pera">By signing up, you agree to receive marketing messages at the phone number or email provided. Msg and data rates may apply. View our privacy policy and terms of service for more info.</p>
   </div>
 
   <!-- Coupon Message (Hidden Initially) -->
@@ -1483,11 +1483,11 @@ padding-top: 20px; font-weight: bold;">Red</p>
         <ul class="list-unstyled">
           <li>
               <i class="fas fa-phone-alt"></i> 
-              <a href="tel:+917990105997" class="text-decoration-none text-dark">+91 799 0105 997</a>
+              <a href="tel:+917990105997" class="text-decoration-none text-dark" style="    text-decoration: underline !important;">+91 799 0105 997</a>
           </li>
           <li>
               <i class="fas fa-envelope"></i> 
-              <a href="mailto:example@example.com" class="text-decoration-none text-dark">Email Us</a>
+              <a href="mailto:example@example.com" class="text-decoration-none text-dark" style="    text-decoration: underline !important;">Email Us</a>
           </li>
       </ul>
     

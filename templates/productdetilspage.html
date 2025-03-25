@@ -32,48 +32,55 @@
 
         <!-- Product Details -->
         <div class="col-md-6">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'shoppage' %}">Collections</a></li>
-                    <li class="breadcrumb-item active">{{ product.category.name }}</li>
-                </ol>
-            </nav>
-
-            <h2 class="fw-bold">{{ product.name }}</h2>
-            <p class="text-muted">SKU: <strong>{{ product.sku }}</strong></p>
-            <h4 class="text-danger fw-bold">₹{{ product.price }} per Meter</h4>
-
-            <ul class="product-benefits">
-              <li><i class="fas fa-shipping-fast text-success"></i> Free domestic shipping</li>
-              <li><i class="fas fa-money-bill-wave text-success"></i> Pay on delivery available</li>
-              <li><i class="fas fa-lock text-success"></i> Secure payment by RazorPay</li>
-              <li><i class="fas fa-box text-primary"></i> <strong>Estimated Ship by:</strong> Mon, Mar 24</li>
-              <li><i class="fas fa-comments text-warning"></i> Ask for fractional quantity or wholesale</li>
-           </ul>
-          
-
-            <!-- Quantity Selection -->
-            <div class="quantity-box">
-                <label for="quantity">Quantity:</label>
-                <div class="input-group">
-                    <button class="btn btn-outline-secondary" id="decrease">-</button>
-                    <input type="text" id="quantity" class="form-control text-center" value="1 Meter" readonly>
-                    <button class="btn btn-outline-secondary" id="increase">+</button>
-                </div>
-            </div>
-
-            <p class="text-muted mt-2">Tax included.</p>
-            <form action="{% url 'add_to_cart' product.id %}" method="POST">
-              {% csrf_token %}
-              <input type="hidden" name="quantity" id="cartQuantity" value="1">
-              <button type="submit" class="btn  mt-3 w-100" style="background-color: black ; color: white;">🛒 Add to Cart</button>
-          </form>
-          
-          <form action="{% url 'add_to_wishlist' product.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger mt-2 w-100">❤️ Add to Wishlist</button>
-        </form>
+          <!-- Breadcrumb Navigation -->
+          <nav aria-label="breadcrumb" class="mb-3">
+              <ol class="breadcrumb small mb-2">
+                  <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{% url 'shoppage' %}" class="text-decoration-none">Collections</a></li>
+                  <li class="breadcrumb-item active">{{ product.category.name }}</li>
+              </ol>
+          </nav>
+      
+          <!-- Product Details -->
+          <h3 class="text-secondary mb-3" style="font-size: 1.3rem; font-weight: normal;">{{ product.name }}</h3>
+          <p class="text-muted small mb-3">SKU: <span class="text-dark">{{ product.sku }} FC-0-AA825-110</span></p>
+      
+          <p class="small text-secondary mb-1">Price</p>
+          <h4 class="text-danger mb-3" style="font-size: 1.1rem; font-weight: normal;">₹{{ product.price }} per Meter</h4>
+      
+          <!-- Product Benefits -->
+          <ul class="list-unstyled mt-3 small mb-4">
+              <li class="mb-2"><i class="fas fa-shipping-fast text-success me-2"></i> Free domestic shipping</li>
+              <li class="mb-2"><i class="fas fa-money-bill-wave text-success me-2"></i> Pay on delivery available</li>
+              <li class="mb-2"><i class="fas fa-lock text-success me-2"></i> Secure payment by RazorPay</li>
+              <li class="mb-2"><i class="fas fa-box text-primary me-2"></i> <span class="text-dark">Estimated Ship by:</span> Mon, Mar 24</li>
+              <li><i class="fas fa-comments text-warning me-2"></i> Ask for fractional quantity or wholesale</li>
+          </ul>
+      
+          <!-- Quantity Selector -->
+          <div class="d-flex align-items-center mt-3 mb-4">
+              <label for="quantity" class="me-2 small">Quantity:</label>
+              <div class="input-group" style="width: 130px;">
+                  <button class="btn btn-outline-secondary btn-sm" id="decrease">-</button>
+                  <input type="text" id="quantity" class="form-control text-center small" value="1 Meter" readonly>
+                  <button class="btn btn-outline-secondary btn-sm" id="increase">+</button>
+              </div>
+          </div>
+      
+          <p class="text-muted small mt-2 mb-3">Tax included.</p>
+      
+          <!-- Action Buttons -->
+          <div class="mt-3">
+              <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="quantity" id="cartQuantity" value="1">
+                  <button type="submit" class="btn btn-dark w-100 py-2 btn-sm mb-2">🛒 Add to Cart</button>
+              </form>
+      
+              <form action="{% url 'add_to_wishlist' product.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-danger w-100 py-2 btn-sm"> Add to Wishlist</button>
+              </form>
 
         <style>
           .buy-more-save-more {
@@ -87,58 +94,57 @@
           }
         </style>
         
-        <div class="buy-more-save-more mt-3 p-1 border rounded shadow-sm">
-            <h4 class="fw-bold text-center">BUY MORE & SAVE MORE</h4>
-            <p class="text-muted text-center mb-1">Use the below codes at checkout for discounts.</p>
-        
-            <div class="row">
-                <!-- Offer Box 1 -->
-                <div class="col-12 mb-1">
-                    <div class="offer-box p-1 border rounded text-center shadow-sm">
-                        <h5 class="text-danger fw-bold mb-1">Get 10% Off</h5>
-                        <p class="mb-1">Get 10% off on your first order.</p>
-                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">WELCOME</span></p>
-                    </div>
-                </div>
-        
-                <!-- Offer Box 2 -->
-                <div class="col-12 mb-1">
-                    <div class="offer-box p-1 border rounded text-center shadow-sm">
-                        <h5 class="text-danger fw-bold mb-1">Get 10% Off</h5>
-                        <p class="mb-1">Spend ₹2,999 & get 10% off.</p>
-                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">SAVE10</span></p>
-                    </div>
-                </div>
-        
-                <!-- Offer Box 3 -->
-                <div class="col-12 mb-1">
-                    <div class="offer-box p-1 border rounded text-center shadow-sm">
-                        <h5 class="text-danger fw-bold mb-1">Get 12% Off</h5>
-                        <p class="mb-1">Spend ₹4,999 & get 12% off.</p>
-                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">SAVE12</span></p>
-                    </div>
-                </div>
-        
-                <!-- Offer Box 4 -->
-                <div class="col-12 mb-1">
-                    <div class="offer-box p-1 border rounded text-center shadow-sm">
-                        <h5 class="text-danger fw-bold mb-1">50% Off on Plain Fabric</h5>
-                        <p class="mb-1">Buy 6m & get 50% off on 2m dyed fabric.</p>
-                        <p class="mb-1"><strong>Use Code:</strong> <span class="text-primary">PLAIN50</span></p>
-                    </div>
-                </div>
-        
-                <!-- Offer Box 5 -->
-                <div class="col-12 mb-1">
-                    <div class="offer-box p-1 border rounded text-center shadow-sm">
-                        <h5 class="text-danger fw-bold mb-1">Bulk Discount</h5>
-                        <p class="mb-1">For bulk orders, contact us.</p>
-                        <button class="btn btn-dark w-100 btn-sm">📩 Contact Us</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        <div class="buy-more-save-more mt-3">
+          <div style="background: #f2c7b0; padding: 10px 15px; border-radius: 10px; margin-bottom: 4px;">
+              <h4 class="fw-bold">BUY MORE & SAVE MORE</h4>
+              <p class="text-muted mb-1">Use the below codes at checkout for discounts.</p>
+          </div>
+      
+          <div class="row">
+              <!-- Offer Box 1 -->
+              <div class="col-12 mb-1">
+                  <div class="offer-box p-2 ps-3 border rounded shadow-sm">
+                      <h5 class="fw-bold mb-1">Get 10% Off</h5>
+                      <p class="mb-1">You are eligible for 10% off on your first order of printed or dyed fabrics.</p>
+                      <p class="mb-1"><strong>Use Code:</strong> <span>WELCOME</span></p>
+                      <p class="mb-1"><em>* Not valid on sale items.</em></p>
+                  </div>
+              </div>
+      
+              <!-- Offer Box 2 -->
+              <div class="col-12 mb-1">
+                  <div class="offer-box p-2 ps-3 border rounded shadow-sm">
+                      <h5 class="fw-bold mb-1">Get 10% Off</h5>
+                      <p class="mb-1">Spend ₹2,999 & get 10% off.</p>
+                      <p class="mb-1"><strong>Use Code:</strong> <span>SAVE10</span></p>
+                      <p class="mb-1"><em>* Not valid on sale items.</em></p>
+                  </div>
+              </div>
+      
+              <!-- Offer Box 3 -->
+              <div class="col-12 mb-1">
+                  <div class="offer-box p-2 ps-3 border rounded shadow-sm">
+                      <h5 class="fw-bold mb-1">Get 12% Off</h5>
+                      <p class="mb-1">Spend ₹4,999 & get 12% off.</p>
+                      <p class="mb-1"><strong>Use Code:</strong> <span>SAVE12</span></p>
+                      <p class="mb-1"><em>* Not valid on sale items.</em></p>
+                  </div>
+              </div>
+      
+              <!-- Offer Box 4 -->
+              <div class="col-12 mb-1">
+                  <div class="offer-box p-2 ps-3 border rounded shadow-sm">
+                      <h5 class="fw-bold mb-1">50% Off on Plain Fabric</h5>
+                      <p class="mb-1">Buy 6m & get 50% off on 2m dyed fabric.</p>
+                      <p class="mb-1"><strong>Use Code:</strong> <span>PLAIN50</span></p>
+                      <p class="mb-1"><em>* Not valid on sale items.</em></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      
+      
       
         
       

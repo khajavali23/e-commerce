@@ -330,8 +330,10 @@ padding: 5px;
       justify-content: center;
       width: 35%;
       margin: auto;
-      gap: 10px;
+      gap: 4px;
       text-align: center;
+      margin: 10p;
+      padding: 14px;
 }
 .foter-thinsg{
   text-align: center;
@@ -671,23 +673,25 @@ h4.text-danger {
 
 .social-icons a {
   text-decoration: none;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  display: flex;
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  display: flex
+;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background: transparent;
-  color: black; /* Black icon color */
-  border: 2px solid black; /* Black border for circle */
+  color: black;
+  border: 0px solid black;
   transition: all 0.3s ease;
-}
-
-.social-icons a:hover {
   background: black;
   color: white;
+  margin: 0px;
 }
+
+
+
 .banner-content {
     width: 50%;
     background-color: #f8f8f8; /* Light gray background */
@@ -813,6 +817,10 @@ h4.text-danger {
 /* Product Card */
 .product-card {
   position: relative;
+ background-color: #f8f8f8;
+ margin-bottom: 6px;
+ height: 43vh;
+  
  
 }
 .cetent-product {
@@ -823,7 +831,13 @@ h4.text-danger {
   background: white; /* Optional: Background color to avoid transparency */
   padding: 15px;
 }
-
+.box-bttonbtton{
+  position: absolute;
+  left: 0px;
+  bottom: 0;
+  padding: 1px 6px;
+  font-size: 10px;
+}
 
 /* Sale Badge */
 .sale-badge {
@@ -863,9 +877,10 @@ h4.text-danger {
 /* Hover Icons */
 .hover-icons {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
+  top: 1px;
+  right: 0px;
+  display: flex
+;
   flex-direction: column;
   gap: 5px;
   opacity: 0;
@@ -879,13 +894,13 @@ h4.text-danger {
 /* SVG Icons */
 .hover-icons svg {
   background-color: black;
-  border-radius: 30px;
   padding: 5px;
   width: 35px;
   height: 35px;
   fill: white;
   stroke: white;
   transition: transform 0.2s ease-in-out;
+  border-radius: 0px 10px 10px;
 }
 
 /* Hover effect */
@@ -903,9 +918,11 @@ h4.text-danger {
 }
 
 .product-fabric {
-  font-size: 14px;
-  color: #54c63a;
-  margin-bottom: 7px;
+  font-size: 10px;
+    color: #54c63a;
+    margin-bottom: 7px;
+    margin: 0px 0px 7px;
+    font-weight: 400;
 }
 
 
@@ -1123,9 +1140,9 @@ nav ul li a {
   text-align: right;
 }
 .price {
-  font-size: 16px; /* Adjust size as needed */
-  
-  color: #333; /* Change color if required */
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
 }
 
 .custom-card {
@@ -2075,6 +2092,8 @@ body {
 .product-details a{
   text-decoration: none;
   color: black;
+  font-weight: 300;
+  font-size: 13px;
 }
 /* Wishlist Container */
 #wishlistContainer {
@@ -2258,4 +2277,28 @@ body {
   transform: none !important;
   opacity: 1 !important;
   box-shadow: none !important;
+}
+.breadcrumb-banner {
+  background-image: url('../image/home/newbannaer.webp');
+  background-color: #f0f0f0; /* Light gray as a fallback */
+}
+ul a{
+  text-decoration: none;
+}
+.right p{
+  border-bottom: 1px solid black;
+  font-weight: 400;
+}
+.buy-more-save-more .offer-box{
+  background: #f4e3da;
+}
+.buy-more-save-more .offer-box {
+  background: #f4e3da;
+  border-radius: 6px !important;
+}
+.list-unstyled li{
+  margin-bottom: 8px;
+}
+.breadcrumb-item {
+  font-size: 10px;
 }
