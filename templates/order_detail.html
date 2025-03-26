@@ -79,20 +79,23 @@
     }
 </style>
 
-<div class="order-wrapper">
-    <div class="order-box">
-        <h1 class="order-header">🛍️ Order Details</h1>
-        <p class="order-info"><strong>Order ID:</strong> {{ order.id }}</p>
-        <p class="order-status"><strong>Status:</strong> {{ order.status }}</p>
-        <p class="order-total"><strong>Total Price:</strong> ${{ order.total_price }}</p>
+<div class="order-container">
+    <div class="order-card">
+        <h1 class="order-title">🛍️ Order Summary</h1>
+        
+        <div class="order-details">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Status:</strong> <span class="status">{{ order.status }}</span></p>
+            <p><strong>Total Price:</strong> <span class="price">${{ order.total_price }}</span></p>
+        </div>
 
-        <h2>📦 Items Ordered:</h2>
+        <h2 class="items-title">📦 Ordered Items</h2>
         <ul class="items-list">
             {% for item in order.items.all %}
                 <li class="order-item">
-                    <strong>{{ item.product.name }}</strong> - 
-                    Quantity: {{ item.quantity }} - 
-                    Price: ${{ item.price }}
+                    <span class="product-name">{{ item.product.name }}</span>
+                    <span class="quantity">Qty: {{ item.quantity }}</span>
+                    <span class="item-price">Price: ${{ item.price }}</span>
                 </li>
             {% endfor %}
         </ul>
@@ -100,28 +103,28 @@
         <!-- Payment Method Selection -->
         <form id="payment-form" method="POST" action="{% url 'place_order' order.id %}">
             {% csrf_token %}
-            <div class="payment-section">
-                <label>
+            <div class="payment-options">
+                <label class="payment-label">
                     <input type="radio" name="payment_method" value="cod" checked> ✅ Cash on Delivery (COD)
                 </label>
-                <label>
+                <label class="payment-label">
                     <input type="radio" name="payment_method" value="online"> 💳 Pay Online
                 </label>
             </div>
-            <button type="submit" class="confirm-order-btn" id="order-btn">✅ Place Order</button>
+            <button type="submit" class="order-btn" id="order-btn">✅ Confirm Order</button>
         </form>
-        
-        <script>
-            document.getElementById("order-btn").addEventListener("click", function(event) {
-                let paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-                if (paymentMethod === "online") {
-                    event.preventDefault(); // Prevent form submission
-                    window.location.href = "{% url 'order_payment' order.id %}"; // Redirect to payment
-                }
-            });
-        </script>
-        
     </div>
 </div>
+
+<script>
+    document.getElementById("order-btn").addEventListener("click", function(event) {
+        let paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+        if (paymentMethod === "online") {
+            event.preventDefault(); 
+            window.location.href = "{% url 'order_payment' order.id %}";
+        }
+    });
+</script>
+
 
 {% endblock %}

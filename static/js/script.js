@@ -261,3 +261,126 @@ function getCSRFToken() {
     }
     return cookieValue;
 }
+
+
+function updateQuantity(itemId, change) {
+    let inputField = document.querySelector(`input[value="{{ item.quantity }}"]`);
+    
+    if (inputField) {
+        let newValue = parseInt(inputField.value) + change;
+        if (newValue >= 1) {  // Ensure quantity does not go below 1
+            inputField.value = newValue;
+            sendUpdateToBackend(itemId, newValue);
+        }
+    }
+}
+
+function sendUpdateToBackend(itemId, newQuantity) {
+    fetch(`/update-cart/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCSRFToken()  // Ensure CSRF token is included
+        },
+        body: JSON.stringify({ item_id: itemId, quantity: newQuantity })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Cart updated successfully!");
+        } else {
+            console.error("Error updating cart");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+// Function to get CSRF token (Required for Django POST requests)
+function getCSRFToken() {
+    return document.querySelector('[name=csrfmiddlewaretoken]').value;
+}
+function updateQuantity(itemId, change) {
+    let cartItem = document.querySelector(`button[onclick="updateQuantity(${itemId}, 1)"]`)
+        .closest(".cart-item");
+
+    let quantityInput = cartItem.querySelector("input[type='number']");
+    let pricePerUnit = parseFloat(cartItem.querySelector(".price").dataset.price);
+    
+    let newQuantity = parseInt(quantityInput.value) + change;
+    if (newQuantity < 1) {
+        newQuantity = 1;  // Prevent negative or zero quantity
+    }
+
+    quantityInput.value = newQuantity;  // Update UI immediately
+
+    // Update total price in the UI
+    updateTotalPrice();
+
+    // Send update request to Django backend
+    fetch("/update-cart/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCSRFToken(),
+        },
+        body: JSON.stringify({ item_id: itemId, quantity: newQuantity }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("total-price-value").innerText = data.total_price.toFixed(2);
+        } else {
+            alert("Error updating cart: " + data.error);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+// Function to calculate and update total price
+function updateTotalPrice() {
+    let total = 0;
+    document.querySelectorAll(".cart-item").forEach(cartItem => {
+        let quantity = parseInt(cartItem.querySelector("input[type='number']").value);
+        let price = parseFloat(cartItem.querySelector(".price").dataset.price);
+        total += quantity * price;
+    });
+
+    document.getElementById("total-price-value").innerText = total.toFixed(2);
+}
+
+// Get CSRF token function (for Django security)
+function getCSRFToken() {
+    return document.querySelector('[name=csrfmiddlewaretoken]').value;
+}
+
+// Call `updateTotalPrice` on page load to ensure correct total
+document.addEventListener("DOMContentLoaded", updateTotalPrice);
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".wishlist-icon").forEach((icon) => {
+      icon.addEventListener("click", function () {
+        const productId = this.getAttribute("data-product-id");
+        
+        fetch(`/add-to-wishlist/${productId}/`, {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCSRFToken(),
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Added to wishlist!");
+          } else {
+            alert("Failed to add to wishlist.");
+          }
+        });
+      });
+    });
+  
+    function getCSRFToken() {
+      return document.querySelector("[name=csrfmiddlewaretoken]").value;
+    }
+  });
+  

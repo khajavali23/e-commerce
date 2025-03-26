@@ -20,20 +20,29 @@
                     <div class="cart-item-details flex-grow-1 ms-3">
                         <p class="fw-bold mb-1">{{ item.product.name }}</p>
                         <div class="d-flex align-items-center">
-                          <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, -1)">-</button>
-                          <input type="number" class="form-control form-control-sm text-center mx-1" value="{{ item.quantity }}" min="1" style="width: 60px;">
-                          <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, 1)">+</button>
-                      </div>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, -1)">-</button>
+                            <input type="number" class="form-control form-control-sm text-center mx-1" value="{{ item.quantity }}" min="1" style="width: 60px;">
+                            <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, 1)">+</button>
+                        </div>
                     </div>
                     <div class="cart-quantity">
-                        <span class="text-muted">₹{{ item.product.price }} / meter</span>
+                        <span class="text-muted price" data-price="{{ item.product.price }}">₹{{ item.product.price }} / meter</span>
                     </div>
                 </div>
                 {% empty %}
                 <p>No items in cart.</p>
                 {% endfor %}
+                <form method="post">
+                    {% csrf_token %}
+                </form>
+            </div>
+        
+            <!-- Show total price -->
+            <div id="total-price" class="mt-3 fw-bold text-end">
+                Total Price: ₹<span id="total-price-value">{{ total_price }}</span>
             </div>
         </div>
+        
 
         <!-- Right Section: Order Summary -->
         <!-- Order Summary Section -->
@@ -58,7 +67,6 @@
     </div>
 </div>
 
-<!-- Location Modal -->
 <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,28 +76,86 @@
             </div>
             <div class="modal-body">
                 <form id="addressForm">
+                    <!-- Full Name -->
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="mb-3">
+                        <label class="form-label">Contact Number</label>
+                        <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number">
+                    </div>
+
+                    <!-- Alternate Contact Number -->
+                    <div class="mb-3">
+                        <label class="form-label">Alternate Contact (Optional)</label>
+                        <input type="tel" class="form-control" id="altPhone" pattern="[0-9]{10}" placeholder="Enter alternate mobile number">
+                    </div>
+
+                    <!-- Street Address -->
                     <div class="mb-3">
                         <label class="form-label">Main Street</label>
                         <input type="text" class="form-control" id="street" required>
                     </div>
+
+                    <!-- Landmark -->
                     <div class="mb-3">
                         <label class="form-label">Landmark</label>
                         <input type="text" class="form-control" id="landmark">
                     </div>
+
+                    <!-- City -->
                     <div class="mb-3">
                         <label class="form-label">City</label>
                         <input type="text" class="form-control" id="city" required>
                     </div>
+
+                    <!-- State -->
+                    <div class="mb-3">
+                        <label class="form-label">State</label>
+                        <select class="form-control" id="state" required>
+                            <option value="" disabled selected>Select your state</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Pincode -->
                     <div class="mb-3">
                         <label class="form-label">Pincode</label>
-                        <input type="text" class="form-control" id="pincode" required>
+                        <input type="text" class="form-control" id="pincode" required pattern="[0-9]{6}" placeholder="Enter 6-digit pincode">
                     </div>
+
+                    <!-- Address Type -->
+                    <div class="mb-3">
+                        <label class="form-label">Address Type</label>
+                        <select class="form-control" id="addressType" required>
+                            <option value="Home">Home</option>
+                            <option value="Office">Office</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Save Address Checkbox -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="saveAddress">
+                        <label class="form-check-label" for="saveAddress">Save this address for future orders</label>
+                    </div>
+
+                    <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary w-100">Confirm Address</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Final Checkout Modal -->
 <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
@@ -316,339 +382,156 @@ document.getElementById('addressForm').addEventListener('submit', function(event
     }
 </script>
 
-
 <div class="container main-cate">
   <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="container arrived-contaic">
+          <div class="left">
+            <h3>Get Matching Fabrics</h3>
+          </div>
+          <div class="right">
+            <p style="border-bottom: 2px solid black; font-weight: bold;">View All</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Product Cards with col-md-4 -->
+        {% for y in plain_fabrics_products %}          
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+              <!-- Product Image -->
+              <div class="product-image" style="position: relative;">
+                  <a href="{% url 'productdetilspage' y.id %}">
+                      {% if y.image %}
+                          <img src="{{ y.image.url }}" class="img-fluid default-img" alt="{{ y.name }}" />
+                      {% else %}
+                          <img src="/static/images/default.jpg" class="img-fluid default-img" alt="No Image Available" />
+                      {% endif %}
+      
+                      {% if y.hover_image %}
+                          <img src="{{ y.hover_image.url }}" class="img-fluid hover-img" alt="{{ y.name }} - Hover" />
+                      {% else %}
+                          <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
+                      {% endif %}
+                  </a>
+                  <button class="box-bttonbtton">BEST SELLER</button>
+              </div>
+      
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                  <!-- Wishlist Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                      <path d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                      stroke="white" fill="none" stroke-width="2"></path>
+                  </svg>
+      
+                  <!-- Add to Cart Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                      <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                  </svg>
+              </div>
+      
+              <!-- Product Details -->
+              <div class="product-details">
+                  <h6 class="product-title">
+                      <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
+                  </h6>
+                  <p class="product-fabric">Fabric : {{ y.description }}</p>
+                  <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
+              </div>
+          </div>
+      </div>
+      
+       {% endfor %}
+       
+     
+        <div></div>
+        <!-- End of row -->
+      </div>
+    </div>
+    <!-- End of row -->
+  </div>
+</div>
+
+
+
+<div class="container main-cate">
+    <div class="row">
       <div class="col-md-12">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="container arrived-contaic">
-              <div class="left">
-                <h3>Japan Satin Fabric</h3>
-              </div>
-              <div class="right">
-                <p style=" border-bottom: 2px solid black; font-weight: bold;">View All</p>
-              </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="container arrived-contaic">
+            <div class="left">
+              <h3>Recently viewed</h3>
             </div>
-            
-          </div>
-
-          <div class="row mt-3">
-              <!-- Product Cards with col-md-4 -->
-              <div class="product-card-container" style="width: 20%;">
-                <div class="product-card">
-                    <!-- Sale Badge -->
-                    <span class="sale-badge">Sale</span>
-            
-                    <!-- Product Image -->
-                    <div class="product-image">
-                        <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-                        <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-            
-                        <!-- Hover Icons -->
-                        <div class="hover-icons">
-                            <!-- Wishlist Icon -->
-                            <div style="background-color: black;">
-                              <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                            </div>
-            
-                            <!-- Add to Cart Icon -->
-                            <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-                        </div>
-                    </div>
-            
-                    <!-- Product Details -->
-                    <div class="product-details">
-                        <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-                        <p class="product-fabric">Fabric: Japan Satin</p>
-                        <p class="price" >₹300 per meter</p>
-
-                    </div>
-                </div>
+            <div class="right">
+              <p style="border-bottom: 2px solid black; font-weight: bold;">View All</p>
             </div>
-            
-
-            <div class="product-card-container" style="width: 20%;">
-              <div class="product-card">
-                  <!-- Sale Badge -->
-                  <span class="sale-badge">Sale</span>
-          
-                  <!-- Product Image -->
-                  <div class="product-image">
-                    <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-                    <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-        
-                    <!-- Hover Icons -->
-                    <div class="hover-icons">
-                        <!-- Wishlist Icon -->
-                        <div style="background-color: black;">
-                          <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                        </div>
-        
-                        <!-- Add to Cart Icon -->
-                        <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-                    </div>
-                </div>
-          
-                  <!-- Product Details -->
-                  <div class="product-details">
-                      <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-                      <p class="product-fabric">Fabric: Japan Satin</p>
-                      <p class="price">₹300 per meter</p>
-                  </div>
-              </div>
           </div>
+        </div>
+  
+        <div class="row">
+          <!-- Product Cards with col-md-4 -->
+          {% for y in featured_collection_products %}          
           <div class="product-card-container" style="width: 20%;">
             <div class="product-card">
-                <!-- Sale Badge -->
-                <span class="sale-badge">Sale</span>
-        
                 <!-- Product Image -->
-                <div class="product-image">
-                    <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-                    <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
+                <div class="product-image" style="position: relative;">
+                    <a href="{% url 'productdetilspage' y.id %}">
+                        {% if y.image %}
+                            <img src="{{ y.image.url }}" class="img-fluid default-img" alt="{{ y.name }}" />
+                        {% else %}
+                            <img src="/static/images/default.jpg" class="img-fluid default-img" alt="No Image Available" />
+                        {% endif %}
         
-                    <!-- Hover Icons -->
-                    <div class="hover-icons">
-                        <!-- Wishlist Icon -->
-                        <div style="background-color: black;">
-                          <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                        </div>
+                        {% if y.hover_image %}
+                            <img src="{{ y.hover_image.url }}" class="img-fluid hover-img" alt="{{ y.name }} - Hover" />
+                        {% else %}
+                            <img src="/static/images/default.jpg" class="img-fluid hover-img" alt="No Image Available" />
+                        {% endif %}
+                    </a>
+                    <button class="box-bttonbtton">BEST SELLER</button>
+                </div>
         
-                        <!-- Add to Cart Icon -->
-                        <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-                    </div>
+                <!-- Hover Icons -->
+                <div class="hover-icons">
+                    <!-- Wishlist Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                        <path d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                        stroke="white" fill="none" stroke-width="2"></path>
+                    </svg>
+        
+                    <!-- Add to Cart Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                        <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                    </svg>
                 </div>
         
                 <!-- Product Details -->
                 <div class="product-details">
-                    <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-                    <p class="product-fabric">Fabric: Japan Satin</p>
-                    <p class="price">₹300 per meter</p>
+                    <h6 class="product-title">
+                        <a href="{% url 'productdetilspage' y.id %}">{{ y.name }}</a>
+                    </h6>
+                    <p class="product-fabric">Fabric : {{ y.description }}</p>
+                    <p class="price">{{ y.price }} <span style="font-size: 10px;">per meter</span></p>
                 </div>
             </div>
         </div>
-
-        <div class="product-card-container" style="width: 20%;">
-          <div class="product-card">
-              <!-- Sale Badge -->
-              <span class="sale-badge">Sale</span>
-      
-              <!-- Product Image -->
-              <div class="product-image">
-                <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-                <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-    
-                <!-- Hover Icons -->
-                <div class="hover-icons">
-                    <!-- Wishlist Icon -->
-                    <div style="background-color: black;">
-                      <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                    </div>
-    
-                    <!-- Add to Cart Icon -->
-                    <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-                </div>
-            </div>
-      
-              <!-- Product Details -->
-              <div class="product-details">
-                  <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-                  <p class="product-fabric">Fabric: Japan Satin</p>
-                  <p class="price">
-                      ₹251.00 <span class="old-price">₹289.00</span>
-                      <span class="discount">Save 13%</span>
-                  </p>
-              </div>
-          </div>
+        
+         {% endfor %}
+         
+       
+          <div></div>
+          <!-- End of row -->
+        </div>
       </div>
-      <div class="product-card-container" style="width: 20%;">
-        <div class="product-card">
-            <!-- Sale Badge -->
-            <span class="sale-badge">Sale</span>
-    
-            <!-- Product Image -->
-            <div class="product-image">
-                <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-                <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-    
-                <!-- Hover Icons -->
-                <div class="hover-icons">
-                    <!-- Wishlist Icon -->
-                    <div style="background-color: black;">
-                      <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                    </div>
-    
-                    <!-- Add to Cart Icon -->
-                    <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-                </div>
-            </div>
-    
-            <!-- Product Details -->
-            <div class="product-details">
-                <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-                <p class="product-fabric">Fabric: Japan Satin</p>
-                <p class="price">₹300 per meter</p>
-            </div>
-        </div>
+      <!-- End of row -->
     </div>
-    <div class="product-card-container" style="width: 20%;">
-      <div class="product-card">
-          <!-- Sale Badge -->
-          <span class="sale-badge">Sale</span>
+  </div>
   
-          <!-- Product Image -->
-          <div class="product-image">
-            <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-            <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
 
-            <!-- Hover Icons -->
-            <div class="hover-icons">
-                <!-- Wishlist Icon -->
-                <div style="background-color: black;">
-                  <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                </div>
 
-                <!-- Add to Cart Icon -->
-                <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-            </div>
-        </div>
-  
-          <!-- Product Details -->
-          <div class="product-details">
-              <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-              <p class="product-fabric">Fabric: Japan Satin</p>
-              <p class="price">
-                  ₹251.00 <span class="old-price">₹289.00</span>
-                  <span class="discount">Save 13%</span>
-              </p>
-          </div>
-      </div>
-  </div>
-
-  <div class="product-card-container" style="width: 20%;">
-    <div class="product-card">
-        <!-- Sale Badge -->
-        <span class="sale-badge">Sale</span>
-
-        <!-- Product Image -->
-        <div class="product-image">
-            <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-            <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-
-            <!-- Hover Icons -->
-            <div class="hover-icons">
-                <!-- Wishlist Icon -->
-                <div style="background-color: black;">
-                  <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-                </div>
-
-                <!-- Add to Cart Icon -->
-                <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-            </div>
-        </div>
-
-        <!-- Product Details -->
-        <div class="product-details">
-            <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-            <p class="product-fabric">Fabric: Japan Satin</p>
-            <p class="price">₹300 per meter</p>
-        </div>
-    </div>
-</div>
-
-<div class="product-card-container" style="width: 20%;">
-  <div class="product-card">
-      <!-- Sale Badge -->
-      <span class="sale-badge">Sale</span>
-
-      <!-- Product Image -->
-      <div class="product-image">
-        <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-        <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-
-        <!-- Hover Icons -->
-        <div class="hover-icons">
-            <!-- Wishlist Icon -->
-            <div style="background-color: black;">
-              <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-            </div>
-
-            <!-- Add to Cart Icon -->
-            <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-        </div>
-    </div>
-
-      <!-- Product Details -->
-      <div class="product-details">
-          <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-          <p class="product-fabric">Fabric: Japan Satin</p>
-          <p class="price">
-              ₹251.00 <span class="old-price">₹289.00</span>
-              <span class="discount">Save 13%</span>
-          </p>
-      </div>
-  </div>
-</div>
-<div class="product-card-container" style="width: 20%;">
-  <div class="product-card">
-      <!-- Sale Badge -->
-      <span class="sale-badge">Sale</span>
-
-      <!-- Product Image -->
-      <div class="product-image">
-        <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-        <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-
-        <!-- Hover Icons -->
-        <div class="hover-icons">
-            <!-- Wishlist Icon -->
-            <div style="background-color: black;">
-              <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-            </div>
-
-            <!-- Add to Cart Icon -->
-            <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-        </div>
-    </div>
-
-      <!-- Product Details -->
-      <div class="product-details">
-          <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-          <p class="product-fabric">Fabric: Japan Satin</p>
-          <p class="price">₹300 per meter</p>
-      </div>
-  </div>
-</div>
-<div class="product-card-container" style="width: 20%;">
-  <div class="product-card">
-      <!-- Sale Badge -->
-      <span class="sale-badge">Sale</span>
-
-      <!-- Product Image -->
-      <div class="product-image">
-        <img src="{% static 'Image/home/newarrived1.webp' %}" class="img-fluid default-img" alt="Product Image">
-        <img src="{% static 'Image/home/newarrived10.webp' %}" class="img-fluid hover-img" alt="Product Hover Image">
-
-        <!-- Hover Icons -->
-        <div class="hover-icons">
-            <!-- Wishlist Icon -->
-            <div style="background-color: black;">
-              <img src="Image/home/lovicon.png" alt="" srcset="" style="    height: 35px; background-color: black;">
-            </div>
-
-            <!-- Add to Cart Icon -->
-            <img src="Image/home/plus.png" alt="" srcset="" style="    height: 35px; background-color: black;"> 
-        </div>
-    </div>
-
-      <!-- Product Details -->
-      <div class="product-details">
-          <h6 class="product-title">Rosegold Flower Digital Printed Fabric</h6>
-          <p class="product-fabric">Fabric: Japan Satin</p>
-          <p class="price">₹300 per meter</p>
-      </div>
-  </div>
-</div>
           </div> <!-- End of row -->
       </div> 
   </div> <!-- End of row -->

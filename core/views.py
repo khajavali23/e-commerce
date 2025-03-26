@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect 
-from .models import Category, Product, LookBook, Cart, Order, OrderItem, Wishlist,CartItem,Subscriber
+from .models import Category, Product, LookBook, Cart, Order, OrderItem, Wishlist,CartItem,Subscriber,Customer
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import razorpay
 from django.conf import settings
+import json
 
 
 # Razorpay Client Object Create చేయండి
@@ -63,31 +64,6 @@ def home(request):
 
 
 
-
-
-
-
-
-
-
-
-
-
-from django.shortcuts import render, get_object_or_404
-from .models import Category, Product  # Ensure correct model import
-
-from django.shortcuts import render
-from core.models import Category, Product
-from django.shortcuts import render
-from core.models import Category, Product
-
-from django.shortcuts import render
-from core.models import Category, Product
-from django.shortcuts import render
-from core.models import Category, Product
-
-from django.shortcuts import render
-from core.models import Category, Product
 
 def home(request):
     # Fetch required categories
@@ -170,9 +146,20 @@ def look1(request):
 def productdetilspage(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     categories = Category.objects.filter(parent_category__isnull=True).prefetch_related('subcategories')
+    best_seller_category = Category.objects.filter(name="Best Seller").first()
+    japan_satin_fabric_category = Category.objects.filter(name="Japan Satin Fabric").first()
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+
+
+    japan_satin_fabric_products = Product.objects.filter(category=japan_satin_fabric_category) if japan_satin_fabric_category else []
+    best_seller_products = Product.objects.filter(category=best_seller_category) if best_seller_category else []
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
     
     context = {
         'product': product,
+        'japan_satin_fabric_products': japan_satin_fabric_products,
+        'best_seller_products': best_seller_products,
+        'featured_collection_products': featured_collection_products,
         'categories': categories
     }
     
@@ -268,58 +255,38 @@ def move_to_cart(request, item_id):
 
 @login_required
 
-
 def add_to_cart(request, product_id):
-    # Ensure user is authenticated
-    if not request.user.is_authenticated:
-        messages.error(request, "You need to log in to add items to the cart.")
-        return redirect("login")  # Redirect to login page if not logged in
-
     product = get_object_or_404(Product, id=product_id)
-    
-    # Get or create a cart for the user
     cart, created = Cart.objects.get_or_create(user=request.user)
-
-    # Check if the product is already in the cart
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-
-    # If the item already exists, increase the quantity
+    
     if not created:
-        cart_item.quantity += 1
+        cart_item.quantity += 1  # Increase quantity if already in cart
         cart_item.save()
 
-    messages.success(request, f"{product.name} added to cart successfully!")
-
-    # Redirect to cart page instead of rendering directly
-    return redirect("cart_page")  # Ensure "cart_page" is defined in urls.py
+    return redirect('cart_page') # Ensure "cart_page" is defined in urls.py
 
 
 
 @login_required
-def update_cart(request, item_id):
+def update_cart(request):
     if request.method == "POST":
-        new_quantity = request.POST.get("quantity")
+        try:
+            data = json.loads(request.body)
+            item_id = data.get("item_id")
+            new_quantity = data.get("quantity")
 
-        if not new_quantity or int(new_quantity) < 1:
-            messages.error(request, "Invalid quantity.")
-            return redirect("cart")
+            cart_item = CartItem.objects.get(id=item_id, user=request.user)
+            cart_item.quantity = new_quantity
+            cart_item.save()
 
-        cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
-        cart_item.quantity = int(new_quantity)
-        cart_item.save()
+            # Calculate new total price for the cart
+            total_price = sum(item.product.price * item.quantity for item in CartItem.objects.filter(user=request.user))
 
-        messages.success(request, "Cart updated successfully!")
-        return redirect("cart_view")
-
-    return redirect("cart_view")
-
-@login_required
-def cart_view(request):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    cart_items = cart.cartitem_set.all()  # Get all items in the cart
-
-    return render(request, 'cart.html', {'cart_items': cart_items})
-
+            return JsonResponse({"success": True, "total_price": total_price})
+        except CartItem.DoesNotExist:
+            return JsonResponse({"success": False, "error": "Item not found"})
+    return JsonResponse({"success": False, "error": "Invalid request"})
 
 def get_products(request):
     products = Product.objects.all()
@@ -380,7 +347,6 @@ def place_order(request, order_id):
 
     return redirect('order_detail', order_id=order.id)
 
-    return redirect('order_detail', order_id=order.id)
 def order_success(request):
     return render(request, 'order_success.html')
 
@@ -451,13 +417,33 @@ def cart_view(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
+    # Fetch cart for the logged-in user
     cart = Cart.objects.filter(user=request.user).first()
-    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related("subcategories")
-    cart_items = cart.cartitem_set.all() if cart else []
 
+    # Fetch main categories along with their subcategories
+    categories = Category.objects.filter(parent_category__isnull=True).prefetch_related("subcategories")
+
+    # Get all cart items if the cart exists
+    cart_items = cart.cartitem_set.select_related("product").all() if cart else []
+
+    # Fetch specific categories
+    plain_fabrics_category = Category.objects.filter(name="Plain Fabrics").first()
+    featured_collection_category = Category.objects.filter(name="Featured Collection").first()
+
+    # Retrieve products under these categories
+    plain_fabrics_products = Product.objects.filter(category=plain_fabrics_category) if plain_fabrics_category else []
+    featured_collection_products = Product.objects.filter(category=featured_collection_category) if featured_collection_category else []
+
+    # Calculate total price of cart items
+    total_price = sum(item.product.price * item.quantity for item in cart_items) if cart_items else 0
+
+    # Context data to pass into the template
     context = {
         "categories": categories,
         "cart_items": cart_items,
+        "plain_fabrics_products": plain_fabrics_products,
+        "featured_collection_products": featured_collection_products,
+        "total_price": total_price,
     }
 
     return render(request, "cart.html", context)
@@ -498,3 +484,17 @@ def bestseller_view(request):
         'categories': categories
     }
     return render(request, 'bestseller.html', context)
+
+def admin_dashboard(request):
+    total_sales = sum(order.total_price for order in Order.objects.all())
+    total_orders = Order.objects.count()
+    total_customers = Customer.objects.count()
+    total_products = Product.objects.count()
+
+    context = {
+        'total_sales': total_sales,
+        'total_orders': total_orders,
+        'total_customers': total_customers,
+        'total_products': total_products,
+    }
+    return render(request, 'admin_dashboard.html', context)

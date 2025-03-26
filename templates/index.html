@@ -315,7 +315,7 @@
   <div class="box-modelscri" style="display: flex; justify-content: center; width: 39%; align-items: center;">
       <div class="box-isdesripts" style="text-align: center;">
           <h1>Strips</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+          <p> Upgrade Your Style With Linen Printed Fabric.</p>
           <button style="background-color: white; color: #d75d43; border: 2px solid #d75d43; padding: 10px 20px; cursor: pointer;">Shop Strips</button>
       </div>
   </div>
@@ -337,61 +337,59 @@
             <h3>New Arrived</h3>
           </div>
           <div class="right">
-            <p>View All</p>
+            <p >View All</p>
           </div>
         </div>
       </div>
 
       <div class="row">
         <!-- Product Cards with col-md-4 -->
+        {% for x in  new_arrived_products %}          
+        <div class="product-card-container" style="width: 20%;">
+          <div class="product-card">
+            <!-- Sale Badge -->
+            <span class="sale-badge">Sale</span>
         
-      {% for x in new_arrived_products %}          
-      <div class="product-card-container" style="width: 20%;">
-        <div class="product-card">
-          <!-- Sale Badge -->
-          <span class="sale-badge">Sale</span>
-      
-          <!-- Product Image -->
-          <div class="product-image" style="position: relative;">
-            <a href="{% url 'productdetilspage' x.id %}">
-              <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
-              <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
-            </a>
-            <button class="box-bttonbtton">FEATURED</button>
-      
-            <!-- Hover Icons -->
-            <div class="hover-icons">
-              <!-- Wishlist Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
-                <path
-                  d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
-                  stroke="white"
-                  fill="none"
-                  stroke-width="2"
-                ></path>
-              </svg>
-      
-              <!-- Add to Cart Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
-                <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
-              </svg>
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative;">
+              <a href="{% url 'productdetilspage' x.id %}">
+                <img src="{{ x.image.url }}" class="img-fluid default-img" alt="{{ x.name }}" />
+                <img src="{{ x.hover_image.url }}" class="img-fluid hover-img" alt="{{ x.name }} - Hover" />
+              </a>
+              <button class="box-bttonbtton">FEATURED</button>
+        
+              <!-- Hover Icons -->
+              <div class="hover-icons">
+                <!-- Wishlist Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 25 22" fill="none">
+                  <path
+                    d="M12.4869 22C12.2364 21.9968 11.9918 21.9232 11.7804 21.7875C8.18822 19.57 5.48518 17.3766 3.2783 14.8705C2.01853 13.5287 1.04215 11.942 0.408559 10.207C-0.730606 6.84675 0.5832 2.9211 3.46882 1.07256C4.78425 0.221399 6.35422 -0.134962 7.90363 0.0659208C9.45304 0.266804 10.8831 1.01212 11.9431 2.17126C12.1376 2.37977 12.3162 2.60031 12.4869 2.81685C12.7194 2.51694 12.97 2.2317 13.2371 1.96275C13.8816 1.32075 14.6473 0.816306 15.4888 0.479444C16.3303 0.142583 17.2302 -0.0198119 18.1351 0.00192686C19.0214 0.0266866 19.8936 0.23235 20.6992 0.606539C21.5048 0.980728 22.2271 1.51571 22.8227 2.17928C25.0693 4.63732 25.6012 7.62065 24.3072 10.8045C23.6255 12.404 22.6611 13.8647 21.4613 15.1151C19.3548 17.3836 16.9713 19.3724 14.3683 21.0336C14.019 21.2662 13.6578 21.4907 13.3006 21.7113L13.1934 21.7795C12.9825 21.9174 12.738 21.9937 12.4869 22Z"
+                    stroke="white"
+                    fill="none"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+        
+                <!-- Add to Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus icon--line" viewBox="0 0 64 64" width="20" height="20">
+                  <path d="M32 9v46m23-23H9" fill="none" stroke="white" stroke-width="4"></path>
+                </svg>
+              </div>
+            </div>
+        
+            <!-- Product Details -->
+            <div class="product-details">
+              <h6 class="product-title">
+                <a href="{% url 'productdetilspage' x.id %}">{{ x.name }}</a>
+              </h6>
+              <p class="product-fabric"> Fabric : {{ x.description }}</p>
+              <p class="price">{{ x.price }} <span style="font-size: 10px;">per meter</span></p>
             </div>
           </div>
-      
-          <!-- Product Details -->
-          <div class="product-details">
-            <h6 class="product-title">
-              <a href="{% url 'productdetilspage' x.id %}">{{ x.name }}</a>
-            </h6>
-            <p class="product-fabric"> Fabric : {{ x.description }}</p>
-            <p class="price">{{ x.price }} <span style="font-size: 10px;">per meter</span></p>
-          </div>
         </div>
-      </div>
       
         {% endfor %}
         
-
         <div></div>
         <!-- End of row -->
       </div>
@@ -399,7 +397,6 @@
     <!-- End of row -->
   </div>
 </div>
-
 <!--new arrived-->
 
 
@@ -409,9 +406,9 @@
   <img src="{% static 'Image/home/newarrivedofter.webp' %}" alt="" srcset="" class="shop-fakimg">
 
   <div class="shop-fak">
-    <h1>Lorem, ipsum dolor.</h1>
-    <p>Lorem ipsum dolor sit</p>
-    <button class="shop-button">shop</button>
+    <h1>Bring fashion to your life </h1>
+    <p>shop printed fabric materials </p>
+    <button class="shop-button">shop Fabric</button>
   </div>
 </div>
 
@@ -426,7 +423,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="container arrived-contaic">
           <div class="left">
-            <h3>Japan Stain Fabr</h3>
+            <h3>Japan Satin Fabric</h3>
           </div>
           <div class="right">
             <p >View All</p>
@@ -943,23 +940,18 @@
 
 
 <!--optional button-->
-<div style="display: flex; align-items: center; background-color: #d75d43;">
-  
-  <!-- Text Content (50%) -->
-  <div class="box-isdesripts" style="width: 50%; text-align: center; padding: 20px;">
+<div class="main-scripts" style="display: flex; align-items: center;  flex-wrap: wrap;     background-color: #d75d43;">
+  <img src="{% static 'Image/home/homestic.webp' %}" alt="Home Static Image" width="60%" style="height: 50vh; object-fit: cover;">
+  <div class="box-isdesripts" style="text-align: center; margin-left: 20px;" >
     <h1>Strips</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <button style="    background-color: white;
-    color: black;">Shop Strips</button>
-  </div>
-
-  <!-- Image (50%) -->
-  <div class="main-scripts" style="width: 50%; display: flex; justify-content: center;">
-    <img src="{% static 'Image/home/categori4.webp' %}" alt="Strips Image" style="max-width: 100%; height: auto;">
-  </div>
-
+    <p> Upgrade Your Style With Linen Printed Fabric.</p>
+    <button style="background-color: white; color: #d75d43; border: 2px solid #d75d43; padding: 10px 20px; cursor: pointer;">Shop Strips</button>
 </div>
-
+  
+  <div class="box-modelscri" style="display: flex; justify-content: center; width: 39%; align-items: center;">
+    
+  </div>
+</div>
 <!--optional button fineshed-->
 
 
@@ -1044,8 +1036,8 @@
     <div class="shop-main" style="    display: flex;
     justify-content: center;
     align-items: center;">
-      <h5 style="margin: 0px;">Free shoping</h5>
-      <p style="margin: 0;">Lorem ipsum dolor sit amet consec</p>
+      <h5 style="margin: 0px;">Free Domestic Shipping</h5>
+      <p style="margin: 0;">on all repaid over 999</p>
       <button class="shop-button">shop</button>
 
     </div>
@@ -1155,7 +1147,7 @@
       <div class="custom-card">
         <img src="{% static 'Image/home/cusstomdesign.webp' %}" class="img-fluid" alt="Custom Design">
         <h5>Custom Design Printing</h5>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus consequatur sit inventore iure sapiente ipsa.</p>
+        <p>Our team can print your unique designs, patterns, or photos on a variety of high-quality fabrics. Customize your order with a personalized design or pattern.</p>
         <button class="custom-button">Contact Us</button>
       </div>
     </div>
@@ -1163,7 +1155,7 @@
       <div class="custom-card">
         <img src="{% static 'Image/home/curate.webp.' %}" class="img-fluid" alt="Custom Design">
         <h5>Curate Your designs</h5>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam consectetur expedita, voluptas cupiditate adipisci.</p>
+        <p>Design Your Dream Look and See it Manifested on the Fabric You Love with Our Expert Team!</p>
         <button class="custom-button">Contact Us</button>
       </div>
     </div>
@@ -1171,7 +1163,7 @@
       <div class="custom-card">
         <img src="{% static 'Image/home/printing.webp' %}" class="img-fluid" alt="Custom Design">
         <h5>Printing on your fabricsn</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus perferendis quos corrupti iusto ut sequi.</p>
+        <p>Get your fabric printed with any design from our collection or yours! No worries if it's not in our list.</p>
         <button class="custom-button">Contact Us</button>
       </div>
     </div>
@@ -1271,17 +1263,17 @@
     <div class="col-md-3">
       <img src="{% static 'Image/home/t-shirt.png' %}" alt="" srcset="" class="icoan-deacrtion">
       <h5>CUSTOM PRINTING</h5>
-      <p>Secure Payment Powered by RazorPay</p>
+      <p>Customize any design and get printed on your desired fabric</p>
     </div>
     <div class="col-md-3">
       <img src="{% static 'Image/home/free-delivery.png' %}" alt="" srcset="" class="icoan-deacrtion">
       <h5>FREE SHIPPING</h5>
-      <p>Secure Payment Powered by RazorPay</p>
+      <p>Free shipping on all prepaid domestic order above Rs.999</p>
     </div>
     <div class="col-md-3">
       <img src="{% static 'Image/home/service.png' %}" alt="" srcset="" class="icoan-deacrtion">
       <h5>FREE SHIPPING</h5>
-      <p>Secure Payment Powered by RazorPay</p>
+      <p>Assurance of Rich Quality Fabric and High Quality Printing</p>
     </div>
   </div>
 </div>

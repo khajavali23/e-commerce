@@ -1,17 +1,20 @@
-
-
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: "Twentieth Century";
+  src: url("../../static/fonts/TwentiethCentury.woff2") format("woff2"),
+       url("../../static/fonts/TwentiethCentury.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  
+/* Apply the font */
+body, p {
+  font-family: "Twentieth Century", sans-serif;
+  font-weight: normal;
+}
+
+h1, h2, h3 {
+  font-family: "Twentieth Century", sans-serif;
+  font-weight: bold;
 }
 
 .nav-bar{
@@ -819,7 +822,8 @@ h4.text-danger {
   position: relative;
  background-color: #f8f8f8;
  margin-bottom: 6px;
- height: 43vh;
+ height: 352px;
+ border-radius: 10px 10px 0px 0px;
   
  
 }
@@ -910,7 +914,7 @@ h4.text-danger {
 
 /* Product Details */
 .product-details {
-  padding: 10px;
+  margin: 10px;
 }
 
 .product-title {
@@ -1140,9 +1144,9 @@ nav ul li a {
   text-align: right;
 }
 .price {
-  font-size: 14px;
+  font-size: 12px;
   color: #333;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .custom-card {
@@ -1839,11 +1843,11 @@ nav ul li a::after {
 
 .video-content {
   position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 235px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 300px;
 }
 
 .video-heading {
@@ -2093,8 +2097,9 @@ body {
   text-decoration: none;
   color: black;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 10px;
 }
+
 /* Wishlist Container */
 #wishlistContainer {
   display: flex;
@@ -2301,4 +2306,104 @@ ul a{
 }
 .breadcrumb-item {
   font-size: 10px;
+}
+.order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.order-card {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.order-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.order-details p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.status {
+  font-weight: bold;
+  color: #007bff;
+}
+
+
+
+.items-title {
+  font-size: 18px;
+  margin: 15px 0 10px;
+  color: #333;
+}
+
+.items-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.product-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.quantity, .item-price {
+  font-size: 14px;
+  color: #666;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.payment-label {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #444;
+}
+
+.order-btn {
+  width: 100%;
+  background: #28a745;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.order-btn:hover {
+  background: #218838;
+}
+.price span{
+  font-size: 7px !important;
 }
