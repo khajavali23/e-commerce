@@ -9,8 +9,8 @@ from core.views import (
     womenswear, get_products, base, cart_view, update_cart, add_to_cart,
     add_to_wishlist, remove_from_wishlist, user_login, logined_page,
     checkout, order_detail, productdetilspage, place_order, order_success,
-    move_to_cart, subscribe, order_payment, payment_success,newarrival_view, bestseller_view,admin_dashboard
-
+    move_to_cart, subscribe, order_payment, payment_success, newarrival_view,
+    bestseller_view, admin_dashboard
 )
 
 urlpatterns = [
@@ -22,7 +22,7 @@ urlpatterns = [
     path('look1/', look1, name='look1'),
     path('product/<int:product_id>/', productdetilspage, name='productdetilspage'),
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
-    path('cart/', cart_view, name='cart'),
+    path('cart/', cart_view, name='cart_page'),
     path('place-order/<int:order_id>/', place_order, name='place_order'),
     path('move-to-cart/<int:item_id>/', move_to_cart, name='move_to_cart'),
     path('subscribe/', subscribe, name='subscribe'),
@@ -40,13 +40,10 @@ urlpatterns = [
     path('checkout/', checkout, name='checkout'),
     path('order/<int:order_id>/', order_detail, name='order_detail'),
     path('order-success/', order_success, name='order_success'),
-    path("add-to-cart/<int:product_id>/", add_to_cart, name="add_to_cart"),
     path('newarrival/', newarrival_view, name='newarrival'),
     path('bestseller/', bestseller_view, name='bestseller'),
-    path('cart/', cart_view, name='cart_page'),  # Ensure 'cart_page' is defined
-    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('admin_dashboard/', admin_dashboard, name='admin-dashboard'),
-
+    
 ]
 
 if settings.DEBUG:

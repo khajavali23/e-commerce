@@ -209,14 +209,17 @@ def newarrival_view(request):
     return render(request, 'newarrival.html')
 
 
-def add_to_wishlist(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    wishlist_item, created = Wishlist.objects.get_or_create(user=request.user, product=product)
-    
-    if not created:
-        messages.info(request, "Product already in wishlist.")  # Use messages instead of print
 
-    return redirect('wishlist')
+def add_to_wishlist(request, product_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=product_id)
+        wishlist, created = Wishlist.objects.get_or_create(user=request.user, product=product)
+        
+        if created:
+            return JsonResponse({"success": True, "message": "Added to wishlist!"})
+        else:
+            return JsonResponse({"success": False, "message": "Already in wishlist!"})
+    return JsonResponse({"success": False, "message": "User not logged in!"})
 
 
 def remove_from_wishlist(request, item_id):
